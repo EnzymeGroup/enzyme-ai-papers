@@ -1,87 +1,94 @@
-# More Information
+# Usage Guide
 
-Enzyme AI Papers is a lightweight paper sharing and weekly digest platform for
-enzyme AI and computational enzyme research. The intended workflow is:
+Enzyme AI Papers is a curated weekly digest for enzyme AI and computational
+enzyme research. The normal workflow is:
 
 ```text
-Paper URL -> GitHub issue preview -> maintainer label -> generated archive and weekly digest
+Paper URL -> GitHub issue preview -> maintainer review -> generated pull request -> weekly digest
 ```
 
-## How to Read
+## Read Papers
 
-- Start with the latest weekly issue in `README.md` or the MkDocs homepage.
-- Use the archive page to browse accepted papers and weekly history.
-- Use tags and search on the website to narrow papers by task, method,
-  evidence, or application.
+- Start with the latest weekly issue on the website or in `README.md`.
+- Use the archive page to browse older papers and weekly history.
+- Use search and tags to narrow papers by task, method, evidence, or
+  application.
 
-## How to Submit
+## Submit a Paper
 
-Use the Submit page on the website or open a paper suggestion issue and paste
-the paper URL.
+Use the website Submit page or open a GitHub paper suggestion issue with a
+paper URL.
 
-Everything else is optional:
+Required:
 
-- A short note about why the paper matters.
-- Free-text tags.
+- Paper URL.
+
+Optional:
+
+- A short note explaining why the paper matters.
+- Suggested free-text tags.
 - Code, project, dataset, or benchmark link.
+- A title if the source metadata may be hard to parse.
 
-The automation will comment with a review preview and suggested tags.
+The website form only opens a prefilled GitHub issue. It does not store
+credentials, call the GitHub API, or write accepted paper data.
 
-The website form is intentionally static. It opens a prefilled GitHub issue and
-does not store credentials, call the GitHub API, or write accepted paper data.
+## Maintainer Review
 
-## How to Maintain
+Maintainers review the automatic issue preview and use labels as the curation
+interface:
 
-Review the issue preview and apply labels:
-
-- `accepted`: generate a paper record and curation pull request.
-- `needs-info`: ask for more context.
+- `accepted`: include the paper in the archive.
+- `needs-info`: ask the submitter for more context.
 - `rejected`: decline the suggestion.
 
-Accepted papers live under `data/papers/YYYY/`. Weekly issues are generated from
-accepted paper records using `accepted_at`; `data/weekly/` is only for optional
-curator overrides such as a custom summary or commentary.
+When `accepted` is applied, automation creates a curation pull request with the
+paper record and regenerated website pages. Before merging, check the title,
+authors, DOI, source, links, tags, one-line summary, and curator note.
 
-Repository owners can also use the `Publish URL` GitHub Actions workflow for
-trusted direct publication from a single URL. That workflow writes to `main`
-and deploys Pages after running the same generation, validation, tests, and
-MkDocs build steps.
+Accepted papers live under `data/papers/YYYY/`. Weekly issues are generated
+from accepted paper records using `accepted_at`; `data/weekly/` is only for
+optional curator overrides such as custom commentary.
 
-If a paper was published by mistake or needs a metadata correction, repository
-owners can use the `Manage Paper` GitHub Actions workflow. It can update common
-fields or delete a paper by id, DOI, or URL, then regenerates README and the
-website from the corrected data.
+## Curation Scope
 
-## Public Project Boundary
+Accept papers with a clear connection to enzyme AI or computational enzyme
+research, including:
+
+- Enzyme design or redesign.
+- Enzyme function prediction.
+- Substrate specificity.
+- Catalytic site discovery or engineering.
+- Enzyme stability, expression, or activity optimization.
+- Directed evolution with computational or AI support.
+- Computational biocatalysis.
+- Enzyme datasets, benchmarks, or reusable tools.
+- Important reviews or perspectives for enzyme AI.
+
+Do not accept papers that are only weakly related, such as:
+
+- General protein design papers with no enzyme-specific relevance.
+- Generic docking or molecular modeling papers without an enzyme application.
+- News, blog posts, or press releases without a primary paper.
+- Papers where enzyme relevance is only a minor keyword.
+- Duplicates of an existing preprint or published record.
+
+Curator notes should be short and original. Explain what the paper contributes,
+why it matters for enzyme AI, and any important limitation. Do not copy the
+paper abstract.
+
+## Corrections
+
+If a published record has incorrect metadata, open an issue or pull request with
+the correction. Maintainers should update the paper record, regenerate the
+README and website, and let validation run before merging.
+
+## Project Boundary
 
 - Visitors can submit suggestions, not accepted records.
+- The website does not hold a GitHub token.
+- Paper suggestions are GitHub issues tied to the submitter account.
 - Maintainers control `accepted`, `needs-info`, and `rejected`.
-- Localhost, private IP, `.local`, and non-standard-port URLs are rejected by
-  the curation scripts.
-- The curation workflow opens a pull request instead of merging directly.
-- Direct maintainer workflows are limited by the
-  `ENZYME_PAPERS_DIRECT_PUBLISHERS` repository variable and write to `main`
-  only after validation passes.
-
-## Local Validation
-
-```bash
-python3 scripts/validate_papers.py
-python3 scripts/build_docs.py
-python3 -m unittest discover -s tests
-```
-
-Preview the website when MkDocs is installed:
-
-```bash
-mkdocs serve -a 127.0.0.1:8010
-```
-
-## Deployment
-
-Use [DEPLOYMENT.md](DEPLOYMENT.md) when publishing a new GitHub-hosted instance.
-It covers repository setup, public URLs, labels, Actions permissions, GitHub
-Pages, branch protection, and the end-to-end acceptance test.
-
-Use [DEPLOYMENT_RUNBOOK.md](DEPLOYMENT_RUNBOOK.md) for a shorter step-by-step
-execution checklist, including post-deployment paper submission and PR methods.
+- Localhost, private IP, `.local`, and non-standard-port URLs are rejected.
+- Accepted records go through pull requests and validation before reaching
+  `main`.

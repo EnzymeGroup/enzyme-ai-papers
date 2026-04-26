@@ -25,16 +25,16 @@ applications:
 - general
 one_liner: 'Directly published paper for enzyme AI curation: Beyond Structure and
   Affinity: Context-Dependent Signals for de novo Binder Success.'
-why_it_matters: Directly published by cnjxt from the project owner URL workflow.
-curator: cnjxt
+why_it_matters: Directly published by Jianxinnn from the project owner URL workflow.
+curator: Jianxinnn
 featured: false
 issue: ''
-submitted_by: cnjxt
-reviewed_by: cnjxt
-notes: Published directly from URL by cnjxt.
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
 curation:
   status: accepted
   issue: ''
-  submitted_by: cnjxt
-  reviewed_by: cnjxt
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
   featured: false

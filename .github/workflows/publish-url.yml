@@ -45,7 +45,7 @@ jobs:
       - name: Authorize direct publisher
         env:
           ACTOR: ${{ github.actor }}
-          DIRECT_PUBLISHERS: ${{ vars.ENZYME_PAPERS_DIRECT_PUBLISHERS || 'cnjxt' }}
+          DIRECT_PUBLISHERS: ${{ vars.ENZYME_PAPERS_DIRECT_PUBLISHERS || 'Jianxinnn' }}
         run: |
           allowed=",$DIRECT_PUBLISHERS,"
           if [[ "$allowed" != *",$ACTOR,"* ]]; then

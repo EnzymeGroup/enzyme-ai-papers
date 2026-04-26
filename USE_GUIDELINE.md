@@ -1,0 +1,157 @@
+# Use Guideline
+
+Short workflows for readers, submitters, and maintainers.
+
+Authorized group maintainers can use GitHub Actions for direct publishing.
+Public users should submit through the website or GitHub Issues.
+
+## Read Papers
+
+Purpose: find accepted enzyme AI papers quickly.
+
+Flow:
+
+1. Open the website or `README.md`.
+2. Read the latest weekly issue first.
+3. Use Archive to browse older papers.
+4. Use search or tags to narrow by topic, method, evidence, or application.
+
+## Submit a Paper from the Website
+
+Purpose: recommend a paper without editing the repository.
+
+Flow:
+
+1. Open the website Submit page.
+2. Paste a public paper URL.
+3. Optionally add a short note, tags, title, or code/project link.
+4. Click `Open GitHub Submission`.
+5. Submit the generated GitHub issue.
+6. Wait for maintainer review.
+
+## Submit a Paper from GitHub
+
+Purpose: submit directly when you are already using the repository.
+
+Flow:
+
+1. Open GitHub Issues.
+2. Choose the paper suggestion issue template.
+3. Paste the paper URL.
+4. Optionally add relevance notes, tags, or code links.
+5. Submit the issue.
+
+## Track a Submission
+
+Purpose: know what happens after an issue is opened.
+
+Flow:
+
+1. Check the automatic metadata preview comment.
+2. Reply if the preview misses important context.
+3. Watch for a maintainer label: `accepted`, `needs-info`, or `rejected`.
+4. If accepted, follow the linked curation pull request.
+
+## Review a Paper as Maintainer
+
+Purpose: decide whether a submitted paper should enter the digest.
+
+Flow:
+
+1. Open the paper suggestion issue.
+2. Read the URL, submitter note, and metadata preview.
+3. Check enzyme relevance, title, authors, DOI, links, and suggested tags.
+4. Add `accepted` to generate a curation pull request.
+5. Add `needs-info` if more context is needed.
+6. Add `rejected` if the paper is out of scope.
+
+## Merge an Accepted Paper
+
+Purpose: publish a reviewed paper to the archive and website.
+
+Flow:
+
+1. Open the generated curation pull request.
+2. Review the YAML record under `data/papers/YYYY/`.
+3. Check the regenerated README and website pages.
+4. Edit metadata if needed.
+5. Wait for validation.
+6. Merge the pull request.
+
+## Submit Directly Through GitHub Actions
+
+Purpose: let an authorized group maintainer publish a trusted paper URL without
+opening a public suggestion issue.
+
+Flow:
+
+1. Make sure your GitHub username is listed in `ENZYME_PAPERS_DIRECT_PUBLISHERS`.
+2. Open GitHub Actions.
+3. Choose `Publish URL`.
+4. Click `Run workflow`.
+5. Paste the paper URL.
+6. Optionally add title, note, tags, or code/project link.
+7. Run the workflow.
+8. Confirm the README and website update.
+
+## Who Can Use Actions Directly
+
+Purpose: keep direct publishing limited to trusted group maintainers.
+
+Flow:
+
+1. Ask a repository admin to add your GitHub username to `ENZYME_PAPERS_DIRECT_PUBLISHERS`.
+2. Use a comma-separated value for multiple maintainers.
+3. Example: `Jianxinnn,alice,bob`.
+4. After that, you can run `Publish URL` and `Manage Paper`.
+5. Being in the GitHub organization or group is not enough by itself.
+6. If your username is not listed, the workflow will stop before publishing.
+
+## Manage a Published Paper Through GitHub Actions
+
+Purpose: let an authorized group maintainer update or delete an accepted paper
+without hand-editing every file.
+
+Flow:
+
+1. Make sure your GitHub username is listed in `ENZYME_PAPERS_DIRECT_PUBLISHERS`.
+2. Open GitHub Actions.
+3. Choose `Manage Paper`.
+4. Select `update` or `delete`.
+5. Enter the paper id, DOI, or URL.
+6. Fill only the fields that should change.
+7. Run the workflow.
+8. Confirm the README and website update.
+
+## Correct a Published Paper
+
+Purpose: fix metadata after publication.
+
+Flow:
+
+1. Open an issue or pull request describing the correction.
+2. Update the paper record under `data/papers/YYYY/`.
+3. Regenerate README and docs.
+4. Run validation.
+5. Merge the correction.
+
+## Remove a Paper
+
+Purpose: remove an incorrect or out-of-scope record.
+
+Flow:
+
+1. Identify the paper id, DOI, or URL.
+2. Delete the paper record from `data/papers/YYYY/`.
+3. Remove any related weekly override in `data/weekly/`.
+4. Regenerate README and docs.
+5. Run validation.
+6. Merge the removal.
+
+## Important Rules
+
+- Submit public `http` or `https` paper URLs only.
+- Do not upload PDFs.
+- Do not copy abstracts into curator notes.
+- Do not accept broad protein papers unless enzyme relevance is clear.
+- Do not edit generated README or docs without rebuilding from source data.

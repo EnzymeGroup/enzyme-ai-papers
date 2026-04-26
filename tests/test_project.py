@@ -59,7 +59,11 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertNotIn("Directly published paper for enzyme AI curation", readme)
         self.assertNotIn("project owner URL workflow", index)
         self.assertIn("- Links: [Paper]", readme)
+        self.assertIn("## Usage", readme)
+        self.assertIn("USE_GUIDELINE.md", readme)
         self.assertIn("MORE_INFO.md", readme)
+        self.assertNotIn("DEPLOYMENT.md", readme)
+        self.assertNotIn("CURATION.md", readme)
 
     def test_fetch_candidates_is_safe_placeholder(self) -> None:
         result = self.run_script("scripts/fetch_candidates.py")

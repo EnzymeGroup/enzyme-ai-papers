@@ -83,16 +83,13 @@ def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) ->
 
     lines.extend(
         [
-            "## More Information",
+            "## Usage",
             "",
-            "- Website source: `docs/`",
-            "- Submit a paper by opening an issue with a paper URL.",
-            "- Maintainers accept papers by applying the `accepted` label.",
-            "- How to read, submit, and maintain the project: [MORE_INFO.md](MORE_INFO.md)",
-            "- How to deploy a public instance: [DEPLOYMENT.md](DEPLOYMENT.md)",
-            "- Step-by-step deployment and submission runbook: [DEPLOYMENT_RUNBOOK.md](DEPLOYMENT_RUNBOOK.md)",
-            "- Curation rules: [CURATION.md](CURATION.md)",
-            "- Contribution workflow: [CONTRIBUTING.md](CONTRIBUTING.md)",
+            "- Quick workflow guide for issue and Actions workflows: [USE_GUIDELINE.md](USE_GUIDELINE.md)",
+            "- Guide for readers, submitters, and group maintainers: [MORE_INFO.md](MORE_INFO.md)",
+            "- Submit a paper by opening a GitHub issue with a paper URL; notes, tags, and code links are optional.",
+            "- Maintainers review issue previews and apply `accepted`, `needs-info`, or `rejected`.",
+            "- Accepted papers are generated through pull requests; the README and website are rebuilt from `data/papers/`.",
             "",
         ]
     )

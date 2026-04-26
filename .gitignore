@@ -5,3 +5,8 @@ __pycache__/
 .mypy_cache/
 site/
 .DS_Store
+
+# Local/private maintainer notes.
+Dev_README.md
+DEV_README.md
+dev-docs/
