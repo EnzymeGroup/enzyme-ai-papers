@@ -1,0 +1,281 @@
+# Deployment Guide
+
+This guide explains how to publish this project as a GitHub-hosted paper
+sharing and weekly digest platform.
+
+## What Gets Deployed
+
+The project has two public surfaces:
+
+- GitHub repository: stores issues, curation pull requests, YAML paper records,
+  and GitHub Actions.
+- GitHub Pages website: serves the MkDocs build artifact generated from `docs/`.
+
+The normal flow after deployment is:
+
+```text
+User submits URL -> GitHub issue preview -> maintainer label -> generated PR -> merge -> website updates
+```
+
+## 1. Create the GitHub Repository
+
+Create a new GitHub repository, for example:
+
+```text
+enzyme-ai-papers
+```
+
+Then push the local project:
+
+```bash
+git init
+git add .
+git commit -m "Initial enzyme AI papers platform"
+git branch -M main
+git remote add origin https://github.com/<owner>/enzyme-ai-papers.git
+git push -u origin main
+```
+
+Purpose: this gives GitHub Actions, Issues, Pull Requests, and Pages a real
+repository to operate on.
+
+## 2. Configure Public URLs
+
+Update `mkdocs.yml`:
+
+```yaml
+site_url: https://<owner>.github.io/enzyme-ai-papers/
+repo_url: https://github.com/<owner>/enzyme-ai-papers
+repo_name: <owner>/enzyme-ai-papers
+```
+
+Then regenerate the site:
+
+```bash
+python3 scripts/build_docs.py
+git add mkdocs.yml README.md docs/
+git commit -m "Configure public repository URLs"
+git push
+```
+
+Purpose: the Submit page uses `repo_url` to open GitHub issues. If this remains
+`your-org/enzyme-ai-papers`, users will be sent to the wrong repository.
+
+## 3. Enable GitHub Issues
+
+In GitHub:
+
+```text
+Settings -> Features -> Issues
+```
+
+Enable Issues.
+
+Purpose: user paper suggestions are stored as GitHub issues. The issue template
+at `.github/ISSUE_TEMPLATE/paper_suggestion.yml` provides the URL-first form.
+
+## 4. Create Curation Labels
+
+Create these labels in the repository:
+
+```text
+needs-review
+paper-suggestion
+accepted
+needs-info
+rejected
+automated-curation
+```
+
+Purpose:
+
+- `needs-review`: default state for new suggestions.
+- `paper-suggestion`: identifies issues created from the paper template.
+- `accepted`: maintainer decision to include the paper.
+- `needs-info`: asks the submitter for more context.
+- `rejected`: declines and closes the suggestion.
+- `automated-curation`: marks pull requests created by automation.
+
+## 5. Enable GitHub Actions Write Permissions
+
+In GitHub:
+
+```text
+Settings -> Actions -> General -> Workflow permissions
+```
+
+Select:
+
+```text
+Read and write permissions
+Allow GitHub Actions to create and approve pull requests
+```
+
+Purpose: the issue curation workflow needs permission to comment on issues,
+write generated files to a branch, and open pull requests.
+
+## 6. Configure GitHub Pages
+
+The simplest setup is:
+
+```text
+Settings -> Pages
+Build and deployment: GitHub Actions
+```
+
+Purpose: `scripts/build_docs.py` generates the MkDocs source files under
+`docs/`, then `.github/workflows/deploy-pages.yml` runs `mkdocs build --strict`
+and publishes the built `site/` artifact. Do not deploy `main` + `/docs`
+directly, because GitHub Pages will render it with Jekyll instead of MkDocs.
+
+## 7. Protect the Main Branch
+
+Recommended branch protection for `main`:
+
+- Require pull request before merging.
+- Require status checks to pass.
+- Require the `Validate` workflow.
+- Require the `Build static site` workflow.
+- Do not allow direct pushes except for trusted maintainers if needed.
+
+Purpose: issue automation creates pull requests, but maintainers still review
+and merge. This keeps public submissions from directly changing the archive.
+
+## 8. Understand the Workflows
+
+### Issue Curation
+
+File:
+
+```text
+.github/workflows/issue-curation.yml
+```
+
+When an issue is opened, edited, or reopened, it runs:
+
+```bash
+python scripts/preview_issue.py --event "$GITHUB_EVENT_PATH" --fetch-metadata
+```
+
+It comments a metadata preview on the issue.
+
+When a maintainer applies `accepted`, it runs:
+
+```bash
+python scripts/accept_issue.py --event "$GITHUB_EVENT_PATH" --reviewer "$GITHUB_ACTOR" --fetch-metadata
+python scripts/build_docs.py
+python scripts/validate_papers.py
+python -m unittest discover -s tests
+```
+
+Then it opens a curation pull request.
+
+### Validation
+
+File:
+
+```text
+.github/workflows/validate.yml
+```
+
+Runs on pull requests and pushes to `main`. It validates metadata, regenerates
+docs, runs tests, and checks that generated files are committed.
+
+### Static Site Build
+
+File:
+
+```text
+.github/workflows/build-site.yml
+```
+
+Runs MkDocs in strict mode to catch broken pages, links, and build errors.
+
+### Pages Deploy
+
+File:
+
+```text
+.github/workflows/deploy-pages.yml
+```
+
+Runs on pushes to `main` and manual dispatch. It regenerates docs, builds the
+MkDocs site into `site/`, uploads the Pages artifact, and deploys it to GitHub
+Pages.
+
+### Direct URL Publish
+
+File:
+
+```text
+.github/workflows/publish-url.yml
+```
+
+Runs only by manual dispatch from the Actions tab and only when the actor is
+listed in the `ENZYME_PAPERS_DIRECT_PUBLISHERS` repository variable. It accepts
+a paper URL plus optional title, note, tags, and code link. It creates or
+updates the paper YAML directly on `main`, regenerates docs, runs
+validation/tests/MkDocs build, commits the changes, and deploys the built Pages
+artifact in the same workflow.
+
+### Direct Paper Management
+
+File:
+
+```text
+.github/workflows/manage-paper.yml
+```
+
+Runs only by manual dispatch from the Actions tab and only when the actor is
+listed in the `ENZYME_PAPERS_DIRECT_PUBLISHERS` repository variable. It can
+update selected metadata fields or delete an accepted paper by paper id, DOI,
+or URL. After the change, it regenerates README and docs, runs
+validation/tests/MkDocs build, commits to `main`, and deploys Pages.
+
+## 9. End-to-End Acceptance Test
+
+After deployment, test the real workflow:
+
+1. Open the website Submit page.
+2. Submit a public paper URL.
+3. Confirm a GitHub issue is created.
+4. Confirm the preview comment appears.
+5. Add the `accepted` label as a maintainer.
+6. Confirm a pull request is created.
+7. Review the generated YAML under `data/papers/YYYY/`.
+8. Confirm `README.md` and `docs/` include the paper.
+9. Merge the PR.
+10. Confirm GitHub Pages updates.
+
+For a deletion or metadata correction test, use the direct maintainer `Manage Paper`
+workflow on a non-public test record and confirm the generated README/docs no
+longer include the deleted entry, or include the corrected fields.
+
+Purpose: this verifies the real repository permissions, issue template,
+metadata fetch, generated PR, validation, and Pages publication.
+
+## 10. Release Checklist
+
+Before announcing the project publicly:
+
+- Replace or remove example seed papers.
+- Confirm `mkdocs.yml` uses the real repository and Pages URL.
+- Confirm all curation labels exist.
+- Confirm GitHub Actions can open pull requests.
+- Confirm branch protection is enabled.
+- Confirm GitHub Pages build and deployment source is GitHub Actions.
+- Confirm one real paper suggestion can complete the full issue-to-PR flow.
+- Confirm the direct maintainer `Publish URL` workflow can publish one trusted URL
+  when direct publication is part of the operating model.
+- Confirm the direct maintainer `Manage Paper` workflow can correct or delete a test
+  record when direct maintenance is part of the operating model.
+
+## Operational Notes
+
+- Metadata lookup is best-effort. Maintainers should review generated YAML.
+- The website Submit form contains no GitHub token and cannot write accepted
+  data directly.
+- Localhost, private IP, `.local`, and non-standard-port URLs are rejected by
+  the curation scripts before metadata lookup.
+- Weekly digests are generated from `accepted_at`; maintainers do not need to
+  write week IDs manually.
