@@ -15,7 +15,6 @@ from paperlib import (
     display_note,
     display_summary,
     index_papers,
-    iso_week,
     load_yaml,
     load_papers,
     load_weeklies,
@@ -321,8 +320,6 @@ def iso_week_bounds(week: str) -> tuple[date, date]:
 
 def format_week_range(week: str) -> str:
     start, end = iso_week_bounds(week)
-    if start <= date.today() <= end:
-        return f"{format_dot_date(start)}-"
     if start.year == end.year:
         return f"{format_dot_date(start)}-{end.month}.{end.day}"
     return f"{format_dot_date(start)}-{format_dot_date(end)}"
@@ -333,12 +330,6 @@ def format_dot_date(value: date) -> str:
 
 
 def readme_week_label(weekly: dict[str, Any], index: int) -> str:
-    current_week = iso_week(date.today().isoformat())
-    last_week = iso_week((date.today() - timedelta(days=7)).isoformat())
-    if index == 0 and weekly["week"] == current_week:
-        return "This Week"
-    if index == 1 and weekly["week"] == last_week:
-        return "Last Week"
     return "Latest Week" if index == 0 else "Previous Week"
 
 
