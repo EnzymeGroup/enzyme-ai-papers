@@ -1,0 +1,41 @@
+id: doi-10-1101-2025-07-01-662578
+title: Characterization of selective pressures acting on protein sites with Deep Learning
+authors:
+- Bergiron, E.
+- Nesterenko, L.
+- Barnier, J.
+- Veber, P.
+- Boussau, B.
+year: 2026
+date: '2026-04-24'
+accepted_at: '2026-04-26T17:41:35+00:00'
+source: biorxiv
+doi: 10.1101/2025.07.01.662578
+url: https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4
+pdf: https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4
+published_url: ''
+topics:
+- benchmark-dataset
+methods:
+- hybrid-computational
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: 1
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: 'Accepted from GitHub issue #1.'
+curation:
+  status: accepted
+  issue: 1
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false
