@@ -7,9 +7,15 @@ URL-first, curator-reviewed, and designed for quick reading.
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
-1 accepted enzyme AI or computational enzyme paper collected for 2026-W18.
+2 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
 
 ### Papers
+
+- **Accelerated discovery of highly active enzyme nanohybrids with parallelized Bayesian optimization in hybrid space**
+  - Authors: Yu Liu, Haoyang Hu, Yueheng Han, Jia Song Deon Chon, Chin Lee Lo, Zhixuan Chen, Zheng Zhang, Zhihong Yuan, Jun Ge
+  - Source: Nature Communications, 2026
+  - Tags: `enzyme-design` `bayesian-optimization` `computational-only` `general`
+  - Links: [Paper](https://www.nature.com/articles/s41467-026-70251-3)
 
 - **Characterization of selective pressures acting on protein sites with Deep Learning**
   - Authors: Bergiron, E., Nesterenko, L., Barnier, J., Veber, P., Boussau, B.

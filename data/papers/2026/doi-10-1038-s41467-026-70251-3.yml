@@ -1,0 +1,46 @@
+id: doi-10-1038-s41467-026-70251-3
+title: Accelerated discovery of highly active enzyme nanohybrids with parallelized
+  Bayesian optimization in hybrid space
+authors:
+- Yu Liu
+- Haoyang Hu
+- Yueheng Han
+- Jia Song Deon Chon
+- Chin Lee Lo
+- Zhixuan Chen
+- Zheng Zhang
+- Zhihong Yuan
+- Jun Ge
+year: 2026
+date: '2026-03-07'
+accepted_at: '2026-04-27T11:40:15+08:00'
+source: Nature Communications
+doi: 10.1038/s41467-026-70251-3
+url: https://www.nature.com/articles/s41467-026-70251-3
+pdf: ''
+code: ''
+project: ''
+preprint_url: ''
+published_url: https://doi.org/10.1038/s41467-026-70251-3
+topics:
+- enzyme-design
+methods:
+- bayesian-optimization
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

@@ -47,13 +47,14 @@ hide:
   <label class="search-label" for="paper-search">Search</label>
   <input id="paper-search" type="search" placeholder="Search title, tag, note, author">
   <button class="filter-chip is-active" data-filter="all" type="button">All</button>
-  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
-  <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
+  <button class="filter-chip" data-filter="enzyme-design" type="button">enzyme-design</button>
+  <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
   <button class="filter-chip" data-filter="computational-only" type="button">computational-only</button>
   <button class="filter-chip" data-filter="general" type="button">general</button>
+  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
+  <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
   <button class="filter-chip" data-filter="protein-language-model" type="button">protein-language-model</button>
   <button class="filter-chip" data-filter="stability-expression" type="button">stability-expression</button>
-  <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
 </section>
 
 
@@ -72,8 +73,20 @@ hide:
   <section class="paper-group" id="week-2026-W18">
     <div class="section-label">2026-W18: 2026.4.27-5.3</div>
     <h2>Enzyme AI Papers Weekly - 2026-W18</h2>
-    <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W18.</p>
+    <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W18.</p>
     <div class="paper-grid">
+<article class="paper-card" data-tags="enzyme-design bayesian-optimization computational-only general" data-search="accelerated discovery of highly active enzyme nanohybrids with parallelized bayesian optimization in hybrid space yu liu, haoyang hu, yueheng han, jia song deon chon, chin lee lo, zhixuan chen, zheng zhang, zhihong yuan, jun ge enzyme-design bayesian-optimization computational-only general">
+  <div class="paper-meta">
+    <span>Nature Communications</span>
+    <span>2026</span>
+  </div>
+  <h3>Accelerated discovery of highly active enzyme nanohybrids with parallelized Bayesian optimization in hybrid space</h3>
+  <p class="authors">Yu Liu, Haoyang Hu, Yueheng Han, Jia Song Deon Chon, Chin Lee Lo, Zhixuan Chen, Zheng Zhang, Zhihong Yuan, Jun Ge</p>
+  <div class="tags"><span>enzyme-design</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.nature.com/articles/s41467-026-70251-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="benchmark-dataset hybrid-computational computational-only general" data-search="characterization of selective pressures acting on protein sites with deep learning bergiron, e., nesterenko, l., barnier, j., veber, p., boussau, b. benchmark-dataset hybrid-computational computational-only general">
   <div class="paper-meta">
     <span>biorxiv</span>
@@ -125,6 +138,18 @@ hide:
   <div class="section-label">2026</div>
   <div class="paper-grid">
     
+<article class="paper-card" data-tags="enzyme-design bayesian-optimization computational-only general" data-search="accelerated discovery of highly active enzyme nanohybrids with parallelized bayesian optimization in hybrid space yu liu, haoyang hu, yueheng han, jia song deon chon, chin lee lo, zhixuan chen, zheng zhang, zhihong yuan, jun ge enzyme-design bayesian-optimization computational-only general">
+  <div class="paper-meta">
+    <span>Nature Communications</span>
+    <span>2026</span>
+  </div>
+  <h3>Accelerated discovery of highly active enzyme nanohybrids with parallelized Bayesian optimization in hybrid space</h3>
+  <p class="authors">Yu Liu, Haoyang Hu, Yueheng Han, Jia Song Deon Chon, Chin Lee Lo, Zhixuan Chen, Zheng Zhang, Zhihong Yuan, Jun Ge</p>
+  <div class="tags"><span>enzyme-design</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.nature.com/articles/s41467-026-70251-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="benchmark-dataset hybrid-computational computational-only general" data-search="characterization of selective pressures acting on protein sites with deep learning bergiron, e., nesterenko, l., barnier, j., veber, p., boussau, b. benchmark-dataset hybrid-computational computational-only general">
   <div class="paper-meta">
     <span>biorxiv</span>

@@ -47,12 +47,26 @@ hide:
   <div class="section-label">Latest Week</div>
   <h2>Enzyme AI Papers Weekly - 2026-W18</h2>
   <p class="weekly-range">2026-W18: 2026.4.27-5.3</p>
-  <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W18.</p>
+  <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W18.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
   <div class="section-label">Papers</div>
   <div class="weekly-paper-list">
+
+<article class="paper-row">
+  <div class="paper-row-main">
+    <div class="paper-meta">
+      <span>Nature Communications</span>
+      <span>2026</span>
+    </div>
+    <h3>Accelerated discovery of highly active enzyme nanohybrids with parallelized Bayesian optimization in hybrid space</h3>
+    <p class="authors">Yu Liu, Haoyang Hu, Yueheng Han, Jia Song Deon Chon, Chin Lee Lo, Zhixuan Chen, Zheng Zhang, Zhihong Yuan, Jun Ge</p>
+    <div class="tags"><span>enzyme-design</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  </div>
+  <div class="paper-links"><a href="https://www.nature.com/articles/s41467-026-70251-3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a></div>
+</article>
+
 
 <article class="paper-row">
   <div class="paper-row-main">
