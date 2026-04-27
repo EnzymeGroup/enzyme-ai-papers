@@ -65,7 +65,7 @@ def clean_docs_dir() -> None:
 
 def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) -> None:
     lines = [
-        '<p align="left">',
+        '<p align="center">',
         '  <img src="docs/assets/title.svg" alt="Enzyme AI Papers" width="760">',
         "</p>",
         "",
@@ -567,7 +567,6 @@ TITLE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledb
   </defs>
   <rect width="820" height="160" fill="none"/>
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M37 85c18-42 67-50 94-20 16 18 13 45-7 58-24 16-58 4-67-24" stroke="#0f766e" stroke-width="5"/>
     <path d="M59 78l30-24 36 13 7 38-30 24-36-13z" stroke="#0b4f4a" stroke-width="3.6"/>
     <path d="M89 54l13 75M59 78l73 27M125 67l-59 49" stroke="#7fb7a6" stroke-width="2.6"/>
     <circle cx="59" cy="78" r="6" fill="#0f766e" stroke="#f7f7f4" stroke-width="3"/>
@@ -580,8 +579,7 @@ TITLE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledb
   <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0">
     <text x="170" y="75" fill="url(#wordmark)" font-size="54" font-weight="780">Enzyme AI</text>
     <text x="170" y="121" fill="#171a18" font-size="38" font-weight="680">Papers</text>
-    <path d="M315 112h248" fill="none" stroke="#d8ded8" stroke-width="2.4" stroke-linecap="round"/>
-    <text x="580" y="120" fill="#5f6861" font-size="18" font-weight="620">curated research weekly</text>
+    <text x="318" y="120" fill="#5f6861" font-size="18" font-weight="620">curated research weekly</text>
   </g>
 </svg>
 """

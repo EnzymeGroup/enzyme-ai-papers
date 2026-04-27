@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
   <img src="docs/assets/title.svg" alt="Enzyme AI Papers" width="760">
 </p>
 
