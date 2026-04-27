@@ -107,46 +107,51 @@ Flow:
 5. Being in the GitHub organization or group is not enough by itself.
 6. If your username is not listed, the workflow will stop before publishing.
 
-## Manage a Published Paper Through GitHub Actions
+## Update a Published Paper Through GitHub Actions
 
-Purpose: let an authorized group maintainer update or delete an accepted paper
-without hand-editing every file.
+Purpose: let an authorized group maintainer fix metadata without hand-editing
+every generated file.
 
 Flow:
 
 1. Make sure your GitHub username is listed in `ENZYME_PAPERS_DIRECT_PUBLISHERS`.
 2. Open GitHub Actions.
 3. Choose `Manage Paper`.
-4. Select `update` or `delete`.
+4. Select `update`.
 5. Enter the paper id, DOI, or URL.
 6. Fill only the fields that should change.
+7. Use `clear` for fields that should be emptied, such as `code,project,pdf`.
+8. Run the workflow.
+9. Confirm the README and website update.
+
+## Delete a Published Paper Through GitHub Actions
+
+Purpose: remove an incorrect or out-of-scope paper without hand-editing every
+generated file.
+
+Flow:
+
+1. Make sure your GitHub username is listed in `ENZYME_PAPERS_DIRECT_PUBLISHERS`.
+2. Open GitHub Actions.
+3. Choose `Manage Paper`.
+4. Select `delete`.
+5. Enter the paper id, DOI, or URL in `selector`.
+6. Leave the other fields empty.
 7. Run the workflow.
-8. Confirm the README and website update.
+8. Confirm the paper is gone from the README, website, and archive.
 
-## Correct a Published Paper
+## Correct or Remove a Paper Manually
 
-Purpose: fix metadata after publication.
-
-Flow:
-
-1. Open an issue or pull request describing the correction.
-2. Update the paper record under `data/papers/YYYY/`.
-3. Regenerate README and docs.
-4. Run validation.
-5. Merge the correction.
-
-## Remove a Paper
-
-Purpose: remove an incorrect or out-of-scope record.
+Purpose: use a pull request when GitHub Actions is not appropriate.
 
 Flow:
 
-1. Identify the paper id, DOI, or URL.
-2. Delete the paper record from `data/papers/YYYY/`.
-3. Remove any related weekly override in `data/weekly/`.
-4. Regenerate README and docs.
-5. Run validation.
-6. Merge the removal.
+1. Open an issue or pull request describing the change.
+2. Edit or delete the paper record under `data/papers/YYYY/`.
+3. Remove any related weekly override in `data/weekly/` if needed.
+4. Run `python3 scripts/build_docs.py`.
+5. Run `python3 scripts/validate_papers.py`.
+6. Merge after validation passes.
 
 ## Important Rules
 
