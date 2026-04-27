@@ -577,9 +577,9 @@ TITLE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledb
     <circle cx="66" cy="116" r="6" fill="#0b4f4a" stroke="#f7f7f4" stroke-width="3"/>
   </g>
   <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0">
-    <text x="170" y="75" fill="url(#wordmark)" font-size="54" font-weight="780">Enzyme AI</text>
-    <text x="170" y="121" fill="#171a18" font-size="38" font-weight="680">Papers</text>
-    <text x="318" y="120" fill="#5f6861" font-size="18" font-weight="620">curated research weekly</text>
+    <text x="170" y="84" fill="url(#wordmark)" font-size="54" font-weight="780">Enzyme AI</text>
+    <text x="458" y="84" fill="#171a18" font-size="42" font-weight="720">Papers</text>
+    <text x="172" y="122" fill="#5f6861" font-size="18" font-weight="620">curated research weekly</text>
   </g>
 </svg>
 """
