@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, time
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -330,20 +330,24 @@ def validate_weekly(record: WeeklyRecord, paper_index: dict[str, PaperRecord]) -
 
 
 def sorted_papers(records: list[PaperRecord]) -> list[PaperRecord]:
-    return sorted(records, key=lambda record: (parse_record_date(record.accepted_at), record.paper_id), reverse=True)
+    return sorted(records, key=lambda record: (parse_record_datetime(record.accepted_at), record.paper_id), reverse=True)
 
 
-def parse_record_date(value: str) -> date:
+def parse_record_datetime(value: str) -> datetime:
     raw = str(value).strip()
     if not raw:
         raise ValueError("empty date")
     if len(raw) == 10:
-        return date.fromisoformat(raw)
+        return datetime.combine(date.fromisoformat(raw), time.min, PROJECT_TIMEZONE)
     normalized = raw.replace("Z", "+00:00")
     parsed = datetime.fromisoformat(normalized)
     if parsed.tzinfo is not None:
-        return parsed.astimezone(PROJECT_TIMEZONE).date()
-    return parsed.date()
+        return parsed.astimezone(PROJECT_TIMEZONE)
+    return parsed.replace(tzinfo=PROJECT_TIMEZONE)
+
+
+def parse_record_date(value: str) -> date:
+    return parse_record_datetime(value).date()
 
 
 def project_now() -> datetime:

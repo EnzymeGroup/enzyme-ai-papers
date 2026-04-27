@@ -78,6 +78,33 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertEqual(parse_record_date(accepted_at).isoformat(), "2026-04-27")
         self.assertEqual(iso_week(accepted_at), "2026-W18")
 
+    def test_sorted_papers_puts_newest_acceptance_first(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from paperlib import PaperRecord, sorted_papers
+
+        older = PaperRecord(
+            Path("older.yml"),
+            {
+                "id": "older",
+                "title": "Older accepted paper",
+                "year": 2026,
+                "date": "2026-04-27",
+                "accepted_at": "2026-04-27T01:00:00+08:00",
+            },
+        )
+        newer = PaperRecord(
+            Path("newer.yml"),
+            {
+                "id": "newer",
+                "title": "Newer accepted paper",
+                "year": 2026,
+                "date": "2026-04-27",
+                "accepted_at": "2026-04-27T02:00:00+08:00",
+            },
+        )
+
+        self.assertEqual([record.paper_id for record in sorted_papers([older, newer])], ["newer", "older"])
+
     def test_preview_issue_accepts_url_only_submission(self) -> None:
         event = {
             "issue": {
