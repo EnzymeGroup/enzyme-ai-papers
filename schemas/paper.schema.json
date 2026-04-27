@@ -58,22 +58,27 @@
     },
     "url": {
       "type": "string",
-      "format": "uri"
+      "pattern": "^https?://.+"
     },
     "pdf": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^$|^https?://.+"
     },
     "code": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^$|^https?://.+"
     },
     "project": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^$|^https?://.+"
     },
     "preprint_url": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^$|^https?://.+"
     },
     "published_url": {
-      "type": "string"
+      "type": "string",
+      "pattern": "^$|^https?://.+"
     },
     "topics": {
       "type": "array",

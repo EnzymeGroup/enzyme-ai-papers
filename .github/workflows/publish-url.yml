@@ -25,8 +25,6 @@ on:
         type: string
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: publish-url
@@ -35,9 +33,6 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -45,18 +40,18 @@ jobs:
       - name: Authorize direct publisher
         env:
           ACTOR: ${{ github.actor }}
-          DIRECT_PUBLISHERS: ${{ vars.ENZYME_PAPERS_DIRECT_PUBLISHERS || 'Jianxinnn' }}
+          DIRECT_PUBLISHERS: ${{ vars.ENZYME_PAPERS_DIRECT_PUBLISHERS }}
         run: |
+          if [ -z "$DIRECT_PUBLISHERS" ]; then
+            echo "::error::Repository variable ENZYME_PAPERS_DIRECT_PUBLISHERS is required for direct publishing."
+            exit 1
+          fi
           allowed=",$DIRECT_PUBLISHERS,"
           if [[ "$allowed" != *",$ACTOR,"* ]]; then
             echo "::error::${ACTOR} is not listed in ENZYME_PAPERS_DIRECT_PUBLISHERS."
             exit 1
           fi
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Install dependencies
-        run: python -m pip install -r requirements.txt
+      - uses: ./.github/actions/setup-project
       - name: Publish paper metadata
         env:
           PAPER_URL: ${{ inputs.url }}
@@ -78,8 +73,6 @@ jobs:
         run: python scripts/validate_papers.py
       - name: Run tests
         run: python -m unittest discover -s tests
-      - name: Build MkDocs site
-        run: mkdocs build --strict
       - name: Commit direct publish
         id: commit
         run: |
@@ -94,13 +87,6 @@ jobs:
           git commit -m "Publish paper from URL"
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
       - name: Summary
         run: |
           {
@@ -109,4 +95,6 @@ jobs:
             cat publish-result.txt
             echo
             echo "Repository changes committed: ${{ steps.commit.outputs.changed }}"
+            echo
+            echo "Site deployment will run from the main branch workflow after this push."
           } >> "$GITHUB_STEP_SUMMARY"

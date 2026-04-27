@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass
 from datetime import date, datetime, time
@@ -11,12 +12,14 @@ from zoneinfo import ZoneInfo
 import yaml
 
 
-ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get("ENZYME_PAPERS_ROOT") or DEFAULT_ROOT).resolve()
 DATA_DIR = ROOT / "data"
 PAPERS_DIR = DATA_DIR / "papers"
 WEEKLY_DIR = DATA_DIR / "weekly"
 TAXONOMY_PATH = DATA_DIR / "taxonomy.yml"
 DOCS_DIR = ROOT / "docs"
+SCHEMAS_DIR = ROOT / "schemas"
 PROJECT_TIMEZONE = ZoneInfo("Asia/Shanghai")
 
 REQUIRED_PAPER_FIELDS = {
@@ -176,13 +179,66 @@ def validate_all() -> list[str]:
     paper_index = index_papers(papers)
     weeklies = load_weeklies()
 
-    errors: list[str] = []
+    errors = validate_schema_contract()
     for record in papers:
         errors.extend(validate_paper(record, taxonomy))
     errors.extend(validate_duplicates(papers))
     for record in weeklies:
         errors.extend(validate_weekly(record, paper_index))
     return errors
+
+
+def validate_schema_contract() -> list[str]:
+    errors: list[str] = []
+    contract_checks = (
+        (SCHEMAS_DIR / "paper.schema.json", REQUIRED_PAPER_FIELDS, "paper"),
+        (SCHEMAS_DIR / "weekly.schema.json", REQUIRED_WEEKLY_FIELDS, "weekly"),
+    )
+    for path, required_fields, label in contract_checks:
+        try:
+            schema = load_yaml(path)
+        except FileNotFoundError:
+            errors.append(f"{path}: schema file is missing")
+            continue
+        if not isinstance(schema, dict):
+            errors.append(f"{path}: schema must contain a mapping")
+            continue
+        schema_required = set(schema.get("required") or [])
+        if schema_required != required_fields:
+            expected = ", ".join(sorted(required_fields))
+            found = ", ".join(sorted(schema_required))
+            errors.append(f"{path}: required {label} fields drifted from validator. expected [{expected}], found [{found}]")
+
+    paper_schema = load_optional_schema(SCHEMAS_DIR / "paper.schema.json")
+    if paper_schema:
+        pattern = nested_schema_value(paper_schema, "properties", "id", "pattern")
+        if pattern != FLEXIBLE_ID_RE.pattern:
+            errors.append(f"{SCHEMAS_DIR / 'paper.schema.json'}: id pattern must match validator")
+
+    weekly_schema = load_optional_schema(SCHEMAS_DIR / "weekly.schema.json")
+    if weekly_schema:
+        pattern = nested_schema_value(weekly_schema, "properties", "week", "pattern")
+        if pattern != WEEK_RE.pattern:
+            errors.append(f"{SCHEMAS_DIR / 'weekly.schema.json'}: week pattern must match validator")
+
+    return errors
+
+
+def load_optional_schema(path: Path) -> dict[str, Any]:
+    try:
+        schema = load_yaml(path)
+    except FileNotFoundError:
+        return {}
+    return schema if isinstance(schema, dict) else {}
+
+
+def nested_schema_value(schema: dict[str, Any], *keys: str) -> Any:
+    value: Any = schema
+    for key in keys:
+        if not isinstance(value, dict):
+            return None
+        value = value.get(key)
+    return value
 
 
 def validate_paper(record: PaperRecord, taxonomy: dict[str, Any]) -> list[str]:

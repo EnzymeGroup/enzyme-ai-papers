@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import json
+import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -11,10 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ProjectWorkflowTest(unittest.TestCase):
-    def run_script(self, *args: str) -> subprocess.CompletedProcess[str]:
+    def run_script(self, *args: str, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
+        subprocess_env = os.environ.copy()
+        if env:
+            subprocess_env.update(env)
         return subprocess.run(
             [sys.executable, *args],
             cwd=ROOT,
+            env=subprocess_env,
             text=True,
             capture_output=True,
             check=False,
@@ -26,27 +32,34 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("Validation passed.", result.stdout)
 
     def test_build_docs_script_generates_expected_pages(self) -> None:
-        result = self.run_script("scripts/build_docs.py")
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        with tempfile.TemporaryDirectory() as tmpdir:
+            project_root = Path(tmpdir)
+            shutil.copytree(ROOT / "data", project_root / "data")
+            shutil.copytree(ROOT / "docs_src", project_root / "docs_src")
+            shutil.copytree(ROOT / "schemas", project_root / "schemas")
+            shutil.copy2(ROOT / "mkdocs.yml", project_root / "mkdocs.yml")
 
-        expected_paths = [
-            ROOT / "README.md",
-            ROOT / "docs" / "index.md",
-            ROOT / "docs" / "archive.md",
-            ROOT / "docs" / "info.md",
-            ROOT / "docs" / "assets" / "title.svg",
-            ROOT / "docs" / "assets" / "site.css",
-            ROOT / "docs" / "assets" / "app.js",
-        ]
-        for path in expected_paths:
-            self.assertTrue(path.exists(), f"Missing generated page: {path}")
-            content = path.read_text(encoding="utf-8")
-            self.assertTrue(content.strip(), f"Generated file is empty: {path}")
+            result = self.run_script("scripts/build_docs.py", env={"ENZYME_PAPERS_ROOT": str(project_root)})
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
-        index = (ROOT / "docs" / "index.md").read_text(encoding="utf-8")
-        archive = (ROOT / "docs" / "archive.md").read_text(encoding="utf-8")
-        info = (ROOT / "docs" / "info.md").read_text(encoding="utf-8")
-        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+            expected_paths = [
+                project_root / "README.md",
+                project_root / "docs" / "index.md",
+                project_root / "docs" / "archive.md",
+                project_root / "docs" / "info.md",
+                project_root / "docs" / "assets" / "title.svg",
+                project_root / "docs" / "assets" / "site.css",
+                project_root / "docs" / "assets" / "app.js",
+            ]
+            for path in expected_paths:
+                self.assertTrue(path.exists(), f"Missing generated page: {path}")
+                content = path.read_text(encoding="utf-8")
+                self.assertTrue(content.strip(), f"Generated file is empty: {path}")
+
+            index = (project_root / "docs" / "index.md").read_text(encoding="utf-8")
+            archive = (project_root / "docs" / "archive.md").read_text(encoding="utf-8")
+            info = (project_root / "docs" / "info.md").read_text(encoding="utf-8")
+            readme = (project_root / "README.md").read_text(encoding="utf-8")
         self.assertNotIn("Pick of the Week", index)
         self.assertNotIn("paper-toolbar", index)
         self.assertIn("weekly-paper-list", index)
@@ -67,6 +80,12 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("MORE_INFO.md", readme)
         self.assertNotIn("DEPLOYMENT.md", readme)
         self.assertNotIn("CURATION.md", readme)
+
+    def test_schema_contract_matches_validator(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from paperlib import validate_schema_contract
+
+        self.assertEqual(validate_schema_contract(), [])
 
     def test_fetch_candidates_is_safe_placeholder(self) -> None:
         result = self.run_script("scripts/fetch_candidates.py")
