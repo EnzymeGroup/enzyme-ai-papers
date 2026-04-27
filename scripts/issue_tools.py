@@ -36,6 +36,32 @@ BLOCKED_HOST_SUFFIXES = (
     ".internal",
 )
 SAFE_PORTS = {80, 443}
+MONTHS = {
+    "jan": 1,
+    "january": 1,
+    "feb": 2,
+    "february": 2,
+    "mar": 3,
+    "march": 3,
+    "apr": 4,
+    "april": 4,
+    "may": 5,
+    "jun": 6,
+    "june": 6,
+    "jul": 7,
+    "july": 7,
+    "aug": 8,
+    "august": 8,
+    "sep": 9,
+    "sept": 9,
+    "september": 9,
+    "oct": 10,
+    "october": 10,
+    "nov": 11,
+    "november": 11,
+    "dec": 12,
+    "december": 12,
+}
 
 
 def load_event(path: str | Path) -> dict[str, Any]:
@@ -242,13 +268,23 @@ def fetch_metadata(url: str, metadata: dict[str, Any]) -> dict[str, Any]:
             fetched = fetch_crossref_metadata(str(metadata["doi"]))
             if fetched:
                 return fetched
+        if metadata.get("source") == "sciencedirect":
+            fetched = fetch_sciencedirect_pii_metadata(url)
+            if fetched:
+                return fetched
         arxiv_id = extract_arxiv_id(url)
         if arxiv_id:
             return fetch_arxiv_metadata(arxiv_id)
         pubmed_id = extract_pubmed_id(url)
         if pubmed_id:
             return fetch_pubmed_metadata(pubmed_id)
-        return fetch_html_metadata(url)
+        fetched = fetch_html_metadata(url)
+        html_doi = str(fetched.get("doi") or "")
+        if html_doi:
+            crossref = fetch_crossref_metadata(html_doi)
+            if crossref:
+                return merge_metadata(fetched, crossref)
+        return fetched
     except (urllib.error.URLError, TimeoutError, ValueError, ET.ParseError, json.JSONDecodeError):
         return {}
 
@@ -268,7 +304,7 @@ def fetch_biorxiv_metadata(doi: str, server: str) -> dict[str, Any]:
     authors = split_preprint_authors(str(item.get("authors") or ""))
     date_value = str(item.get("date") or "")
     return {
-        "title": str(item.get("title") or "").strip(),
+        "title": clean_metadata_text(item.get("title")),
         "authors": authors,
         "year": int(date_value[:4]) if re.match(r"^\d{4}", date_value) else None,
         "date": date_value if re.match(r"^\d{4}-\d{2}-\d{2}$", date_value) else "",
@@ -276,7 +312,7 @@ def fetch_biorxiv_metadata(doi: str, server: str) -> dict[str, Any]:
         "doi": clean_doi,
         "preprint_url": preprint_url,
         "pdf": pdf_url,
-        "abstract": str(item.get("abstract") or "").strip(),
+        "abstract": clean_metadata_text(item.get("abstract")),
         "identifier": "doi-" + slugify(clean_doi),
     }
 
@@ -284,22 +320,42 @@ def fetch_biorxiv_metadata(doi: str, server: str) -> dict[str, Any]:
 def fetch_crossref_metadata(doi: str) -> dict[str, Any]:
     encoded = urllib.parse.quote(doi, safe="")
     data = fetch_json(f"https://api.crossref.org/works/{encoded}")
-    message = data.get("message", {})
+    return metadata_from_crossref_message(data.get("message", {}), doi=doi)
+
+
+def fetch_sciencedirect_pii_metadata(url: str) -> dict[str, Any]:
+    pii = extract_sciencedirect_pii(url)
+    if not pii:
+        return {}
+    query = urllib.parse.urlencode({"query": pii, "rows": 3})
+    data = fetch_json(f"https://api.crossref.org/works?{query}")
+    items = data.get("message", {}).get("items", [])
+    if not isinstance(items, list):
+        return {}
+    matched = [item for item in items if isinstance(item, dict) and crossref_item_matches_pii(item, pii)]
+    if not matched and len(items) == 1 and isinstance(items[0], dict):
+        matched = [items[0]]
+    return metadata_from_crossref_message(matched[0]) if matched else {}
+
+
+def metadata_from_crossref_message(message: dict[str, Any], doi: str = "") -> dict[str, Any]:
     date_value = date_from_crossref(message) or ""
     authors = []
     for author in message.get("author", [])[:20]:
         if isinstance(author, dict):
             name = " ".join(part for part in (author.get("given", ""), author.get("family", "")) if part).strip()
             if name:
-                authors.append(name)
+                authors.append(clean_metadata_text(name))
+    clean_doi = str(message.get("DOI") or doi).strip().lower()
     return {
-        "title": first_list_item(message.get("title")),
-        "authors": authors,
+        "title": clean_metadata_text(first_list_item(message.get("title"))),
+        "authors": unique_values(authors),
         "year": int(date_value[:4]) if date_value else None,
         "date": date_value,
-        "source": first_list_item(message.get("container-title")) or "doi",
-        "doi": doi,
+        "source": clean_metadata_text(first_list_item(message.get("container-title"))) or "doi",
+        "doi": clean_doi,
         "published_url": message.get("URL", ""),
+        "identifier": "doi-" + slugify(clean_doi) if clean_doi else "",
     }
 
 
@@ -313,11 +369,10 @@ def fetch_arxiv_metadata(arxiv_id: str) -> dict[str, Any]:
         return {}
     title = text_of(entry.find("atom:title", ns))
     published = text_of(entry.find("atom:published", ns))
-    authors = [text_of(node.find("atom:name", ns)) for node in entry.findall("atom:author", ns)]
-    authors = [author for author in authors if author]
+    authors = unique_values(text_of(node.find("atom:name", ns)) for node in entry.findall("atom:author", ns))
     date_value = published[:10] if published else ""
     return {
-        "title": normalize_spaces(title),
+        "title": clean_metadata_text(title),
         "authors": authors,
         "year": int(date_value[:4]) if date_value else None,
         "date": date_value,
@@ -332,13 +387,13 @@ def fetch_pubmed_metadata(pubmed_id: str) -> dict[str, Any]:
     data = fetch_json(f"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?{query}")
     record = data.get("result", {}).get(pubmed_id, {})
     date_value = parse_pubmed_date(str(record.get("pubdate", "")))
-    authors = [item.get("name", "") for item in record.get("authors", []) if isinstance(item, dict)]
+    authors = [clean_metadata_text(item.get("name", "")) for item in record.get("authors", []) if isinstance(item, dict)]
     return {
-        "title": str(record.get("title", "")).rstrip("."),
-        "authors": [author for author in authors if author],
+        "title": clean_metadata_text(str(record.get("title", "")).rstrip(".")),
+        "authors": unique_values(author for author in authors if author),
         "year": int(date_value[:4]) if date_value else None,
         "date": date_value,
-        "source": str(record.get("source") or "pubmed"),
+        "source": clean_metadata_text(str(record.get("source") or "pubmed")),
     }
 
 
@@ -346,14 +401,15 @@ def fetch_html_metadata(url: str) -> dict[str, Any]:
     html = fetch_bytes(url, limit=300_000).decode("utf-8", errors="ignore")
     title = html_meta(html, ("citation_title", "dc.title", "og:title")) or html_title(html)
     authors = html_meta_all(html, ("citation_author", "dc.creator"))
-    date_value = html_meta(html, ("citation_publication_date", "citation_online_date", "article:published_time", "dc.date"))[:10]
+    date_value = parse_metadata_date(html_meta(html, ("citation_publication_date", "citation_online_date", "article:published_time", "dc.date")))
     doi = html_meta(html, ("citation_doi",)) or extract_doi(html)
     return {
-        "title": normalize_spaces(title),
-        "authors": authors,
+        "title": clean_metadata_text(title),
+        "authors": unique_values(authors),
         "year": int(date_value[:4]) if re.match(r"^\d{4}", date_value) else None,
-        "date": date_value if re.match(r"^\d{4}-\d{2}-\d{2}$", date_value) else "",
-        "doi": doi,
+        "date": date_value,
+        "doi": doi.lower(),
+        "source": clean_metadata_text(html_meta(html, ("citation_journal_title", "dc.source", "og:site_name"))),
     }
 
 
@@ -385,9 +441,76 @@ class NoRedirectHandler(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def merge_metadata(*sources: dict[str, Any]) -> dict[str, Any]:
+    merged: dict[str, Any] = {}
+    for source in sources:
+        for key, value in source.items():
+            if value not in (None, "", []):
+                merged[key] = value
+    return merged
+
+
+def clean_metadata_text(value: Any) -> str:
+    return normalize_spaces(re.sub(r"<[^>]+>", "", unescape(str(value or ""))))
+
+
+def unique_values(values: Any) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values or []:
+        cleaned = clean_metadata_text(value)
+        key = normalize_key(cleaned)
+        if cleaned and key not in seen:
+            seen.add(key)
+            result.append(cleaned)
+    return result
+
+
+def parse_metadata_date(value: str) -> str:
+    raw = clean_metadata_text(value)
+    if not raw:
+        return ""
+    match = re.match(r"^(\d{4})[-/.](\d{1,2})(?:[-/.](\d{1,2}))?", raw)
+    if match:
+        return f"{int(match.group(1)):04d}-{int(match.group(2)):02d}-{int(match.group(3) or 1):02d}"
+    match = re.search(r"(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})", raw)
+    if match:
+        month = MONTHS.get(match.group(2).lower())
+        if month:
+            return f"{int(match.group(3)):04d}-{month:02d}-{int(match.group(1)):02d}"
+    match = re.search(r"([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})", raw)
+    if match:
+        month = MONTHS.get(match.group(1).lower())
+        if month:
+            return f"{int(match.group(3)):04d}-{month:02d}-{int(match.group(2)):02d}"
+    match = re.match(r"^(\d{4})$", raw)
+    if match:
+        return f"{int(match.group(1)):04d}-01-01"
+    return ""
+
+
 def extract_doi(text: str) -> str:
     match = DOI_RE.search(text or "")
     return match.group(0).rstrip(".,);]").lower() if match else ""
+
+
+def extract_sciencedirect_pii(url: str) -> str:
+    parsed = urllib.parse.urlparse(url)
+    if "sciencedirect.com" not in parsed.netloc.lower():
+        return ""
+    match = re.search(r"/pii/([^/?#]+)", parsed.path, flags=re.IGNORECASE)
+    return match.group(1).strip() if match else ""
+
+
+def crossref_item_matches_pii(item: dict[str, Any], pii: str) -> bool:
+    normalized = normalize_key(pii)
+    for key in ("alternative-id", "article-number"):
+        values = item.get(key)
+        if not isinstance(values, list):
+            values = [values]
+        if any(normalize_key(value) == normalized for value in values if value):
+            return True
+    return normalized in normalize_key(item.get("URL", ""))
 
 
 def normalize_preprint_doi(doi: str) -> str:
@@ -397,7 +520,7 @@ def normalize_preprint_doi(doi: str) -> str:
 def split_preprint_authors(value: str) -> list[str]:
     if not value.strip():
         return []
-    return [normalize_spaces(author) for author in value.split(";") if normalize_spaces(author)]
+    return unique_values(author for author in value.split(";") if normalize_spaces(author))
 
 
 def extract_arxiv_id(url: str) -> str:
@@ -546,17 +669,17 @@ def html_meta_all(html: str, names: tuple[str, ...]) -> list[str]:
             rf'<meta\s+[^>]*(?:name|property)=["\']{re.escape(name)}["\'][^>]*content=["\']([^"\']+)["\'][^>]*>',
             re.IGNORECASE,
         )
-        results.extend(normalize_spaces(unescape(match.group(1))) for match in pattern.finditer(html))
+        results.extend(clean_metadata_text(match.group(1)) for match in pattern.finditer(html))
     return [value for value in results if value]
 
 
 def html_title(html: str) -> str:
     match = re.search(r"<title[^>]*>(.*?)</title>", html, flags=re.IGNORECASE | re.DOTALL)
-    return normalize_spaces(unescape(match.group(1))) if match else ""
+    return clean_metadata_text(match.group(1)) if match else ""
 
 
 def text_of(node: ET.Element | None) -> str:
-    return normalize_spaces(node.text or "") if node is not None else ""
+    return clean_metadata_text(node.text or "") if node is not None else ""
 
 
 def normalize_spaces(value: str) -> str:

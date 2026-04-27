@@ -108,6 +108,40 @@ class ProjectWorkflowTest(unittest.TestCase):
 
         self.assertEqual([record.paper_id for record in sorted_papers([older, newer])], ["newer", "older"])
 
+    def test_metadata_helpers_clean_common_publisher_values(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from issue_tools import (
+            clean_metadata_text,
+            extract_sciencedirect_pii,
+            metadata_from_crossref_message,
+            parse_metadata_date,
+            unique_values,
+        )
+
+        self.assertEqual(clean_metadata_text("The <i>LDLR</i> landscape"), "The LDLR landscape")
+        self.assertEqual(unique_values(["Zhu, Xin-Xin", " Zhu, Xin-Xin ", "Kong, Xu-Dong"]), ["Zhu, Xin-Xin", "Kong, Xu-Dong"])
+        self.assertEqual(parse_metadata_date("28 November 2024"), "2024-11-28")
+        self.assertEqual(extract_sciencedirect_pii("https://www.sciencedirect.com/science/article/pii/S2211383526000778"), "S2211383526000778")
+
+        metadata = metadata_from_crossref_message(
+            {
+                "DOI": "10.1126/science.ady7186",
+                "title": ["The functional landscape of <i>LDLR</i>"],
+                "container-title": ["Science"],
+                "published-online": {"date-parts": [[2026, 2, 19]]},
+                "author": [
+                    {"given": "Daniel R.", "family": "Tabet"},
+                    {"given": "Daniel R.", "family": "Tabet"},
+                ],
+                "URL": "https://doi.org/10.1126/science.ady7186",
+            }
+        )
+
+        self.assertEqual(metadata["title"], "The functional landscape of LDLR")
+        self.assertEqual(metadata["authors"], ["Daniel R. Tabet"])
+        self.assertEqual(metadata["date"], "2026-02-19")
+        self.assertEqual(metadata["identifier"], "doi-10-1126-science-ady7186")
+
     def test_preview_issue_accepts_url_only_submission(self) -> None:
         event = {
             "issue": {
