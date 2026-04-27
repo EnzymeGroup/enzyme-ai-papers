@@ -7,6 +7,10 @@ hide:
 <!-- AUTO-GENERATED. DO NOT EDIT DIRECTLY. -->
 
 
+<section class="brand-title" aria-label="Enzyme AI Papers">
+  <img src="../assets/title.svg" alt="Enzyme AI Papers" loading="eager">
+</section>
+
 <section class="paper-start">
   <nav class="paper-switcher" aria-label="Section navigation">
     

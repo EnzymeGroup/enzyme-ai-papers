@@ -65,7 +65,9 @@ def clean_docs_dir() -> None:
 
 def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) -> None:
     lines = [
-        "# Enzyme AI Papers",
+        '<p align="left">',
+        '  <img src="docs/assets/title.svg" alt="Enzyme AI Papers" width="760">',
+        "</p>",
         "",
         PROJECT_DESCRIPTION,
         "URL-first, curator-reviewed, and designed for quick reading.",
@@ -372,6 +374,7 @@ def render_weekly_archive(weeklies: list[dict[str, Any]], paper_index: dict[str,
 
 
 def build_assets() -> None:
+    write_text(DOCS_DIR / "assets" / "title.svg", TITLE_SVG)
     write_text(DOCS_DIR / "assets" / "site.css", SITE_CSS)
     write_text(DOCS_DIR / "assets" / "app.js", SITE_JS)
 
@@ -390,12 +393,19 @@ def render_toolbar(papers: list[Any]) -> str:
 def render_page_shell(active: str, issue: dict[str, Any] | None) -> str:
     if active == "weekly":
         links = {"weekly": "./", "archive": "archive/", "submit": "info/", "issue": "#weekly-papers"}
+        logo_src = "assets/title.svg"
     elif active == "archive":
         links = {"weekly": "../", "archive": "./", "submit": "../info/", "issue": "../#weekly-papers"}
+        logo_src = "../assets/title.svg"
     else:
         links = {"weekly": "../", "archive": "../archive/", "submit": "./", "issue": "../#weekly-papers"}
+        logo_src = "../assets/title.svg"
 
     return f"""
+<section class="brand-title" aria-label="Enzyme AI Papers">
+  <img src="{logo_src}" alt="Enzyme AI Papers" loading="eager">
+</section>
+
 <section class="paper-start">
   <nav class="paper-switcher" aria-label="Section navigation">
     {render_switch_item("weekly", "Weekly", "Curated enzyme AI papers for this week.", links["weekly"], active)}
@@ -545,6 +555,38 @@ def escape(value: Any) -> str:
     return html.escape(str(value), quote=True)
 
 
+TITLE_SVG = """<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" viewBox="0 0 820 160">
+  <title id="title">Enzyme AI Papers</title>
+  <desc id="desc">A minimal wordmark combining an enzyme network motif with the Enzyme AI Papers title.</desc>
+  <defs>
+    <linearGradient id="wordmark" x1="120" y1="28" x2="700" y2="118" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b4f4a"/>
+      <stop offset="0.62" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#b46f12"/>
+    </linearGradient>
+  </defs>
+  <rect width="820" height="160" fill="none"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M37 85c18-42 67-50 94-20 16 18 13 45-7 58-24 16-58 4-67-24" stroke="#0f766e" stroke-width="5"/>
+    <path d="M59 78l30-24 36 13 7 38-30 24-36-13z" stroke="#0b4f4a" stroke-width="3.6"/>
+    <path d="M89 54l13 75M59 78l73 27M125 67l-59 49" stroke="#7fb7a6" stroke-width="2.6"/>
+    <circle cx="59" cy="78" r="6" fill="#0f766e" stroke="#f7f7f4" stroke-width="3"/>
+    <circle cx="89" cy="54" r="6" fill="#b46f12" stroke="#f7f7f4" stroke-width="3"/>
+    <circle cx="125" cy="67" r="6" fill="#0b4f4a" stroke="#f7f7f4" stroke-width="3"/>
+    <circle cx="132" cy="105" r="6" fill="#0f766e" stroke="#f7f7f4" stroke-width="3"/>
+    <circle cx="102" cy="129" r="6" fill="#b46f12" stroke="#f7f7f4" stroke-width="3"/>
+    <circle cx="66" cy="116" r="6" fill="#0b4f4a" stroke="#f7f7f4" stroke-width="3"/>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" letter-spacing="0">
+    <text x="170" y="75" fill="url(#wordmark)" font-size="54" font-weight="780">Enzyme AI</text>
+    <text x="170" y="121" fill="#171a18" font-size="38" font-weight="680">Papers</text>
+    <path d="M315 112h248" fill="none" stroke="#d8ded8" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="580" y="120" fill="#5f6861" font-size="18" font-weight="620">curated research weekly</text>
+  </g>
+</svg>
+"""
+
+
 SITE_CSS = """
 :root {
   --paper-bg: #f7f7f4;
@@ -592,6 +634,19 @@ SITE_CSS = """
 
 .md-content__inner > h1:first-child {
   display: none;
+}
+
+.brand-title {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.2rem 0 0.1rem;
+}
+
+.brand-title img {
+  display: block;
+  height: auto;
+  max-width: 820px;
+  width: min(100%, 820px);
 }
 
 .md-typeset h1,

@@ -34,6 +34,7 @@ class ProjectWorkflowTest(unittest.TestCase):
             ROOT / "docs" / "index.md",
             ROOT / "docs" / "archive.md",
             ROOT / "docs" / "info.md",
+            ROOT / "docs" / "assets" / "title.svg",
             ROOT / "docs" / "assets" / "site.css",
             ROOT / "docs" / "assets" / "app.js",
         ]
@@ -49,9 +50,11 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertNotIn("Pick of the Week", index)
         self.assertNotIn("paper-toolbar", index)
         self.assertIn("weekly-paper-list", index)
+        self.assertIn("brand-title", index)
         self.assertIn("paper-row", index)
         self.assertIn("paper-toolbar", archive)
         self.assertIn("paper-submit-form", info)
+        self.assertIn("docs/assets/title.svg", readme)
         self.assertIn("Open GitHub Submission", info)
         self.assertIn("Enzyme AI Papers Weekly", readme)
         self.assertRegex(readme, r"2026-W17.*2026\.4\.20-")

@@ -1,4 +1,6 @@
-# Enzyme AI Papers
+<p align="left">
+  <img src="docs/assets/title.svg" alt="Enzyme AI Papers" width="760">
+</p>
 
 A curated weekly digest of AI and computational papers for enzyme design, engineering, function prediction, and biocatalysis.
 URL-first, curator-reviewed, and designed for quick reading.
