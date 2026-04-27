@@ -6,6 +6,7 @@ from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -16,6 +17,7 @@ PAPERS_DIR = DATA_DIR / "papers"
 WEEKLY_DIR = DATA_DIR / "weekly"
 TAXONOMY_PATH = DATA_DIR / "taxonomy.yml"
 DOCS_DIR = ROOT / "docs"
+PROJECT_TIMEZONE = ZoneInfo("Asia/Shanghai")
 
 REQUIRED_PAPER_FIELDS = {
     "id",
@@ -338,7 +340,14 @@ def parse_record_date(value: str) -> date:
     if len(raw) == 10:
         return date.fromisoformat(raw)
     normalized = raw.replace("Z", "+00:00")
-    return datetime.fromisoformat(normalized).date()
+    parsed = datetime.fromisoformat(normalized)
+    if parsed.tzinfo is not None:
+        return parsed.astimezone(PROJECT_TIMEZONE).date()
+    return parsed.date()
+
+
+def project_now() -> datetime:
+    return datetime.now(PROJECT_TIMEZONE)
 
 
 def iso_week(value: str) -> str:

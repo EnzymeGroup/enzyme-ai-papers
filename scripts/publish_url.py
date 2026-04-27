@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import datetime, timezone
 from typing import Any
 
 import yaml
@@ -21,7 +20,7 @@ from issue_tools import (
     is_safe_public_url,
     make_paper_id,
 )
-from paperlib import DATA_DIR, ProjectError, is_http_url, load_papers, write_text
+from paperlib import DATA_DIR, ProjectError, is_http_url, load_papers, project_now, write_text
 
 
 def main() -> int:
@@ -31,7 +30,7 @@ def main() -> int:
     parser.add_argument("--note", help="Optional curator note used for one_liner and why_it_matters.")
     parser.add_argument("--tags", help="Optional free-text tag hints.")
     parser.add_argument("--code", help="Optional code, project, dataset, or benchmark URL.")
-    parser.add_argument("--accepted-at", help="ISO date or datetime. Defaults to the current UTC time.")
+    parser.add_argument("--accepted-at", help="ISO date or datetime. Defaults to the project timezone.")
     parser.add_argument("--reviewer", default="owner", help="Curator username. Defaults to owner.")
     parser.add_argument("--featured", action="store_true", help="Set the reserved featured flag.")
     parser.add_argument("--fetch-metadata", action="store_true", help="Best-effort metadata lookup via public APIs.")
@@ -84,7 +83,7 @@ def publish_url(
     if not resolved_title:
         raise ProjectError("title could not be resolved; pass --title or enable metadata fetch for a supported URL")
 
-    accepted_at = accepted_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
+    accepted_at = accepted_at or project_now().isoformat(timespec="seconds")
     publication_date = publication_date_from_metadata(metadata, accepted_at)
     year = int(metadata.get("year") or publication_date[:4])
     tag_groups = infer_tags(

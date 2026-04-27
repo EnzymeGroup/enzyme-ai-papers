@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -20,13 +19,13 @@ from issue_tools import (
     suggestion_from_issue,
     unique_paper_id,
 )
-from paperlib import DATA_DIR, ProjectError, is_http_url, write_text
+from paperlib import DATA_DIR, ProjectError, is_http_url, parse_record_date, project_now, write_text
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Accept a GitHub paper suggestion issue into data/papers.")
     parser.add_argument("--event", required=True, help="Path to the GitHub event JSON payload.")
-    parser.add_argument("--accepted-at", help="ISO date or datetime. Defaults to the current UTC time.")
+    parser.add_argument("--accepted-at", help="ISO date or datetime. Defaults to the project timezone.")
     parser.add_argument("--reviewer", help="Reviewer GitHub username. Defaults to the event sender.")
     parser.add_argument("--fetch-metadata", action="store_true", help="Best-effort metadata lookup via public APIs.")
     parser.add_argument("--force", action="store_true", help="Create or update even if the issue has no accepted label.")
@@ -81,7 +80,7 @@ def accept_issue(
     metadata["code"] = metadata.get("code") or code_link_from_suggestion(str(suggestion.get("code") or ""))
     metadata["project"] = metadata.get("project") or project_link_from_suggestion(str(suggestion.get("code") or ""))
     title = str(metadata.get("title") or suggestion.get("title") or f"Paper suggestion #{suggestion.get('issue')}").strip()
-    accepted_at = accepted_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
+    accepted_at = accepted_at or project_now().isoformat(timespec="seconds")
     publication_date = publication_date_from_metadata(metadata, accepted_at)
     year = int(metadata.get("year") or publication_date[:4])
     base_id = make_paper_id({**metadata, "title": title}, suggestion.get("issue"), year)
@@ -156,7 +155,7 @@ def publication_date_from_metadata(metadata: dict[str, Any], accepted_at: str) -
     value = str(metadata.get("date") or "")
     if len(value) == 10:
         return value
-    return accepted_at[:10]
+    return parse_record_date(accepted_at).isoformat()
 
 
 def code_link_from_suggestion(value: str) -> str:

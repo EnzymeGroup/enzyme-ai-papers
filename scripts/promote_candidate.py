@@ -2,14 +2,13 @@ from __future__ import annotations
 
 import argparse
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 import yaml
 
 from issue_tools import infer_tags, make_paper_id, unique_paper_id
-from paperlib import DATA_DIR, ProjectError, is_http_url, load_yaml, write_text
+from paperlib import DATA_DIR, ProjectError, is_http_url, load_yaml, parse_record_date, project_now, write_text
 
 
 def main() -> int:
@@ -20,7 +19,7 @@ def main() -> int:
     parser.add_argument("--id", help="Accepted paper ID. Defaults to a generated slug.")
     parser.add_argument("--year", type=int, help="Publication or preprint year. Defaults to candidate year or today.")
     parser.add_argument("--date", help="Publication or curation date in YYYY-MM-DD. Defaults to candidate date or today.")
-    parser.add_argument("--accepted-at", help="Accepted date or datetime. Defaults to the current UTC time.")
+    parser.add_argument("--accepted-at", help="Accepted date or datetime. Defaults to the project timezone.")
     args = parser.parse_args()
 
     try:
@@ -54,8 +53,8 @@ def promote_candidate(
     if not is_http_url(url):
         raise ProjectError("candidate url must be an absolute http(s) URL")
 
-    accepted_at = accepted_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
-    date = date or str(candidate.get("date") or accepted_at[:10])
+    accepted_at = accepted_at or project_now().isoformat(timespec="seconds")
+    date = date or str(candidate.get("date") or parse_record_date(accepted_at).isoformat())
     year = year or int(candidate.get("year") or date[:4])
     metadata = {
         "identifier": candidate.get("identifier", ""),

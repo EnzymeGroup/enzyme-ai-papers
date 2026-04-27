@@ -70,6 +70,14 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn("disabled", result.stdout)
 
+    def test_accepted_datetimes_use_project_timezone(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from paperlib import iso_week, parse_record_date
+
+        accepted_at = "2026-04-26T17:38:37+00:00"
+        self.assertEqual(parse_record_date(accepted_at).isoformat(), "2026-04-27")
+        self.assertEqual(iso_week(accepted_at), "2026-W18")
+
     def test_preview_issue_accepts_url_only_submission(self) -> None:
         event = {
             "issue": {

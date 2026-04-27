@@ -3,9 +3,21 @@
 A curated weekly digest of AI and computational papers for enzyme design, engineering, function prediction, and biocatalysis.
 URL-first, curator-reviewed, and designed for quick reading.
 
-## Latest Week: Enzyme AI Papers Weekly - 2026-W17 (2026.4.20-4.26)
+## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
-3 accepted enzyme AI or computational enzyme papers collected for 2026-W17.
+1 accepted enzyme AI or computational enzyme paper collected for 2026-W18.
+
+### Papers
+
+- **Characterization of selective pressures acting on protein sites with Deep Learning**
+  - Authors: Bergiron, E., Nesterenko, L., Barnier, J., Veber, P., Boussau, B.
+  - Source: biorxiv, 2026
+  - Tags: `benchmark-dataset` `hybrid-computational` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4) · [PDF](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4.full.pdf)
+
+## Previous Week: Enzyme AI Papers Weekly - 2026-W17 (2026.4.20-4.26)
+
+2 accepted enzyme AI or computational enzyme papers collected for 2026-W17.
 
 ### Papers
 
@@ -20,12 +32,6 @@ URL-first, curator-reviewed, and designed for quick reading.
   - Source: biorxiv, 2026
   - Tags: `stability-expression` `benchmark-dataset` `bayesian-optimization` `computational-only` `general`
   - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.13.718094v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.13.718094v1.full.pdf)
-
-- **Characterization of selective pressures acting on protein sites with Deep Learning**
-  - Authors: Bergiron, E., Nesterenko, L., Barnier, J., Veber, P., Boussau, B.
-  - Source: biorxiv, 2026
-  - Tags: `benchmark-dataset` `hybrid-computational` `computational-only` `general`
-  - Links: [Paper](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4) · [PDF](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4.full.pdf)
 
 ## Usage
 
