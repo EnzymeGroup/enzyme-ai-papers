@@ -1,0 +1,48 @@
+id: doi-10-64898-2026-04-10-717613
+title: 'Protenix-v2: Broadening the Reach of Structure Prediction and Biomolecular
+  Design'
+authors:
+- Zhang, Y.
+- Gong, C.
+- Sun, J.
+- Guan, J.
+- Ren, M.
+- Xue, S.
+- Zhang, H.
+- Ma, W.
+- Liu, Z.
+- Chen, X.
+- Xiao, W.
+year: 2026
+date: '2026-04-11'
+accepted_at: '2026-04-29T15:33:18+08:00'
+source: biorxiv
+doi: 10.64898/2026.04.10.717613
+url: https://www.biorxiv.org/content/10.64898/2026.04.10.717613v1
+pdf: https://www.biorxiv.org/content/10.64898/2026.04.10.717613v1.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.04.10.717613v1
+published_url: ''
+topics:
+- enzyme-design
+methods:
+- bayesian-optimization
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

@@ -7,9 +7,15 @@ URL-first, curator-reviewed, and designed for quick reading.
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
-2 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
+3 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
 
 ### Papers
+
+- **Protenix-v2: Broadening the Reach of Structure Prediction and Biomolecular Design**
+  - Authors: Zhang, Y., Gong, C., Sun, J., Guan, J., Ren, M., Xue, S., Zhang, H., Ma, W., Liu, Z., Chen, X., Xiao, W.
+  - Source: biorxiv, 2026
+  - Tags: `enzyme-design` `bayesian-optimization` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.10.717613v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.10.717613v1.full.pdf)
 
 - **Accelerated discovery of highly active enzyme nanohybrids with parallelized Bayesian optimization in hybrid space**
   - Authors: Yu Liu, Haoyang Hu, Yueheng Han, Jia Song Deon Chon, Chin Lee Lo, Zhixuan Chen, Zheng Zhang, Zhihong Yuan, Jun Ge
