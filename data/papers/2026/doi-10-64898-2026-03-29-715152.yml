@@ -1,0 +1,44 @@
+id: doi-10-64898-2026-03-29-715152
+title: Benchmarking and Experimental Validation of Machine Learning Strategies for
+  Enzyme Engineering
+authors:
+- Zeng, Z.
+- Jin, J.
+- Xu, R.
+- Luo, X.
+year: 2026
+date: '2026-04-18'
+accepted_at: '2026-04-29T15:36:24+08:00'
+source: biorxiv
+doi: 10.64898/2026.03.29.715152
+url: https://www.biorxiv.org/content/10.64898/2026.03.29.715152v2
+pdf: https://www.biorxiv.org/content/10.64898/2026.03.29.715152v2.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.03.29.715152v2
+published_url: ''
+topics:
+- enzyme-design
+- stability-expression
+- directed-evolution
+- benchmark-dataset
+methods:
+- hybrid-computational
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false
