@@ -1,0 +1,47 @@
+id: doi-10-64898-2026-03-24-714074
+title: 'CombinGym: a benchmark platform for machine learning-assisted design of combinatorial
+  protein variants'
+authors:
+- Chen, Y.
+- Fu, L.
+- Lu, X.
+- Li, W.
+- Gao, Y.
+- Wang, Y.
+- Ruan, Z.
+- Si, T.
+year: 2026
+date: '2026-03-25'
+accepted_at: '2026-04-29T15:41:49+08:00'
+source: biorxiv
+doi: 10.64898/2026.03.24.714074
+url: https://www.biorxiv.org/content/10.64898/2026.03.24.714074v1
+pdf: https://www.biorxiv.org/content/10.64898/2026.03.24.714074v1.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.03.24.714074v1
+published_url: ''
+topics:
+- function-prediction
+- substrate-specificity
+- benchmark-dataset
+methods:
+- bayesian-optimization
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

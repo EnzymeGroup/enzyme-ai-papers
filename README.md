@@ -7,9 +7,15 @@ URL-first, curator-reviewed, and designed for quick reading.
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
-4 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
+5 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
 
 ### Papers
+
+- **CombinGym: a benchmark platform for machine learning-assisted design of combinatorial protein variants**
+  - Authors: Chen, Y., Fu, L., Lu, X., Li, W., Gao, Y., Wang, Y., Ruan, Z., Si, T.
+  - Source: biorxiv, 2026
+  - Tags: `function-prediction` `substrate-specificity` `benchmark-dataset` `bayesian-optimization` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.03.24.714074v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.03.24.714074v1.full.pdf)
 
 - **Benchmarking and Experimental Validation of Machine Learning Strategies for Enzyme Engineering**
   - Authors: Zeng, Z., Jin, J., Xu, R., Luo, X.
