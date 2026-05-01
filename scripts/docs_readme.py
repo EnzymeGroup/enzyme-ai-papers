@@ -4,7 +4,7 @@ from typing import Any
 
 from docs_config import PROJECT_DESCRIPTION
 from docs_weeklies import readme_week_label
-from paperlib import ROOT, compact_paper_item, write_text
+from paperlib import ROOT, compact_paper_item, load_yaml, write_text
 
 
 def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) -> None:
@@ -15,6 +15,7 @@ def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) ->
         "",
         PROJECT_DESCRIPTION,
         "URL-first, curator-reviewed, and designed for quick reading.",
+        newsletter_intro_line(),
         "",
     ]
 
@@ -40,6 +41,30 @@ def build_readme(weeklies: list[dict[str, Any]], paper_index: dict[str, Any]) ->
     )
 
     write_text(ROOT / "README.md", "\n".join(lines).rstrip() + "\n")
+
+
+def newsletter_intro_line() -> str:
+    url = newsletter_subscribe_url()
+    if not url:
+        return ""
+    return f"Weekly email: [subscribe to the digest]({url})."
+
+
+def newsletter_subscribe_url() -> str:
+    config = load_yaml(ROOT / "mkdocs.yml")
+    if not isinstance(config, dict):
+        return ""
+    extra = config.get("extra")
+    if not isinstance(extra, dict):
+        return ""
+    newsletter = extra.get("newsletter")
+    if not isinstance(newsletter, dict):
+        return ""
+    subscribe_url = str(newsletter.get("subscribe_url") or "").strip()
+    if subscribe_url:
+        return subscribe_url
+    username = str(newsletter.get("buttondown_username") or "").strip()
+    return f"https://buttondown.com/{username}" if username else ""
 
 
 def append_readme_week(

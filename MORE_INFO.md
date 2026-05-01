@@ -13,6 +13,8 @@ Paper URL -> GitHub issue preview -> maintainer review -> generated pull request
 - Use the archive page to browse older papers and weekly history.
 - Use search and tags to narrow papers by task, method, evidence, or
   application.
+- Subscribe to the weekly email if a maintainer has configured the newsletter
+  provider.
 
 ## Submit a Paper
 
@@ -49,6 +51,18 @@ authors, DOI, source, links, tags, one-line summary, and curator note.
 Accepted papers live under `data/papers/YYYY/`. Weekly issues are generated
 from accepted paper records using `accepted_at`; `data/weekly/` is only for
 optional curator overrides such as custom commentary.
+
+## Weekly Email
+
+The email newsletter is another publishing surface for the same derived weekly
+digest. It does not store subscriber addresses in the repository. Subscription,
+unsubscribe, and delivery preferences are handled by the configured newsletter
+provider.
+
+Maintainers can preview or send a week through the `Weekly newsletter` GitHub
+Actions workflow. The workflow defaults to the previous complete ISO week,
+skips weeks with no accepted papers, and records real deliveries under
+`data/mailings/`.
 
 ## Curation Scope
 
@@ -92,3 +106,4 @@ README and website, and let validation run before merging.
 - Localhost, private IP, `.local`, and non-standard-port URLs are rejected.
 - Accepted records go through pull requests and validation before reaching
   `main`.
+- Subscriber email addresses are not stored in this repository.

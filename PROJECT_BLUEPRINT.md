@@ -93,7 +93,10 @@ The repository includes:
 - `scripts/preview_issue.py`: builds an issue preview comment.
 - `scripts/accept_issue.py`: converts an accepted issue into paper YAML.
 - `scripts/build_docs.py`: derives weekly digests and generated pages.
+- `scripts/send_weekly_email.py`: renders and sends the previous complete
+  weekly digest through the configured newsletter provider.
 - `.github/workflows/issue-curation.yml`: label-driven curation workflow.
+- `.github/workflows/newsletter.yml`: scheduled weekly newsletter delivery.
 - `.github/workflows/validate.yml`: metadata, docs, and tests.
 - `.github/workflows/build-site.yml`: MkDocs build.
 
@@ -120,10 +123,11 @@ Implemented:
 - `accepted_at`-derived weekly digest generation.
 - Optional weekly override files.
 - Generated README, latest weekly page, archive, and info page.
+- Weekly newsletter rendering, dry-run, delivery records, and scheduled
+  Buttondown sending.
 
 Not implemented:
 
 - Fully reliable metadata extraction for every publisher URL.
 - Automatic relevance scoring.
-- Email newsletter or RSS distribution.
 - Database-backed search.

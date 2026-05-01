@@ -16,6 +16,18 @@ Flow:
 3. Use Archive to browse older papers.
 4. Use search or tags to narrow by topic, method, evidence, or application.
 
+## Subscribe to Weekly Email
+
+Purpose: receive the weekly digest by email when a newsletter provider is
+configured.
+
+Flow:
+
+1. Open the website Submit page.
+2. Enter your email in the weekly email subscription form.
+3. Confirm the subscription if the provider sends a confirmation email.
+4. Use the provider unsubscribe link if you no longer want emails.
+
 ## Submit a Paper from the Website
 
 Purpose: recommend a paper without editing the repository.
@@ -139,6 +151,24 @@ Flow:
 6. Leave the other fields empty.
 7. Run the workflow.
 8. Confirm the paper is gone from the README, website, and archive.
+
+## Send or Preview the Weekly Newsletter
+
+Purpose: let maintainers verify or send the weekly email without hand-writing
+email content.
+
+Flow:
+
+1. Configure `BUTTONDOWN_API_KEY` as a GitHub Actions secret.
+2. Optionally set `extra.newsletter.buttondown_username` in `mkdocs.yml` so the
+   website shows a subscription form.
+3. Open GitHub Actions.
+4. Choose `Weekly newsletter`.
+5. Select `dry-run` to preview, `draft` to create a provider draft, or `send`
+   to queue delivery.
+6. Leave `week` blank to use the previous complete ISO week.
+7. Run the workflow.
+8. Check `data/mailings/YYYY-Www.yml` after a real send.
 
 ## Correct or Remove a Paper Manually
 

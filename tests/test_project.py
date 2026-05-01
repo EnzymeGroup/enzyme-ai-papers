@@ -80,6 +80,7 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("MORE_INFO.md", readme)
         self.assertNotIn("DEPLOYMENT.md", readme)
         self.assertNotIn("CURATION.md", readme)
+        self.assertIn("Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/info/).", readme)
 
     def test_schema_contract_matches_validator(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
@@ -126,6 +127,33 @@ class ProjectWorkflowTest(unittest.TestCase):
         )
 
         self.assertEqual([record.paper_id for record in sorted_papers([older, newer])], ["newer", "older"])
+
+    def test_newsletter_renders_previous_week_digest(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from datetime import date
+
+        from newsletter import build_newsletter_issue, previous_iso_week
+
+        self.assertEqual(previous_iso_week(date(2026, 5, 4)), "2026-W18")
+        issue = build_newsletter_issue("2026-W18")
+
+        self.assertIsNotNone(issue)
+        assert issue is not None
+        self.assertEqual(issue.week, "2026-W18")
+        self.assertEqual(len(issue.paper_ids), 5)
+        self.assertIn("Enzyme AI Papers Weekly - 2026-W18", issue.subject)
+        self.assertIn("## Papers", issue.body)
+        self.assertIn("https://enzymegroup.github.io/enzyme-ai-papers/archive/#week-2026-W18", issue.body)
+        self.assertRegex(issue.content_sha256, r"^[0-9a-f]{64}$")
+
+    def test_send_weekly_email_dry_run_does_not_need_provider_secret(self) -> None:
+        result = self.run_script("scripts/send_weekly_email.py", "--week", "2026-W18")
+
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertIn("Newsletter dry-run", result.stdout)
+        self.assertIn("Week: 2026-W18", result.stdout)
+        self.assertIn("Papers: 5", result.stdout)
+        self.assertIn("Content SHA-256:", result.stdout)
 
     def test_metadata_helpers_clean_common_publisher_values(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))

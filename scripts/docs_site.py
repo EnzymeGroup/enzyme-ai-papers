@@ -78,6 +78,8 @@ def build_info_page(issue: dict[str, Any] | None) -> None:
     issue_url = issue_submission_url()
     content = f"""{PAGE_PREFIX}{render_page_shell("submit", issue)}
 
+{render_newsletter_signup()}
+
 {render_submit_form(issue_url)}
 
 <section class="info-grid">
@@ -103,6 +105,57 @@ Pull request -> validation + MkDocs build</code></pre>
 </section>
 """
     write_text(DOCS_DIR / "info.md", content.rstrip() + "\n")
+
+
+def render_newsletter_signup() -> str:
+    config = newsletter_config()
+    username = str(config.get("buttondown_username") or "").strip()
+    subscribe_url = str(config.get("subscribe_url") or "").strip()
+    if username:
+        action = f"https://buttondown.com/api/emails/embed-subscribe/{escape(username)}"
+        return f"""
+<section class="newsletter-panel">
+  <form class="newsletter-form embeddable-buttondown-form" action="{escape(action)}" method="post">
+    <div>
+      <div class="section-label">Weekly email</div>
+      <h2>Subscribe to Enzyme AI Papers</h2>
+      <p>Get the weekly digest when new accepted papers are available.</p>
+    </div>
+    <label for="newsletter-email">Email</label>
+    <div class="newsletter-controls">
+      <input id="newsletter-email" type="email" name="email" required placeholder="you@example.com">
+      <input type="hidden" value="1" name="embed">
+      <button type="submit">Subscribe</button>
+    </div>
+    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown.</p>
+  </form>
+</section>
+"""
+    if subscribe_url:
+        return f"""
+<section class="newsletter-panel">
+  <div class="newsletter-form">
+    <div>
+      <div class="section-label">Weekly email</div>
+      <h2>Subscribe to Enzyme AI Papers</h2>
+      <p>Get the weekly digest when new accepted papers are available.</p>
+    </div>
+    <a class="newsletter-button" href="{escape(subscribe_url)}">Subscribe</a>
+  </div>
+</section>
+"""
+    return ""
+
+
+def newsletter_config() -> dict[str, Any]:
+    config = load_yaml(ROOT / "mkdocs.yml")
+    if not isinstance(config, dict):
+        return {}
+    extra = config.get("extra")
+    if not isinstance(extra, dict):
+        return {}
+    newsletter = extra.get("newsletter")
+    return newsletter if isinstance(newsletter, dict) else {}
 
 
 def render_weekly(weekly: dict[str, Any], paper_index: dict[str, Any]) -> str:

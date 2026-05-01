@@ -1,0 +1,85 @@
+name: Weekly newsletter
+
+on:
+  schedule:
+    # GitHub cron runs in UTC. This is Monday 09:00 in Asia/Shanghai.
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      week:
+        description: Optional ISO week to send, for example 2026-W18. Defaults to the previous ISO week.
+        required: false
+        type: string
+      send_mode:
+        description: Create a provider draft, send to subscribers, or only dry-run.
+        required: true
+        default: send
+        type: choice
+        options:
+          - send
+          - draft
+          - dry-run
+      force:
+        description: Re-send even if a delivery record already exists.
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-newsletter
+  cancel-in-progress: false
+
+jobs:
+  newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: ./.github/actions/setup-project
+      - name: Validate metadata
+        run: python scripts/validate_papers.py
+      - name: Send weekly newsletter
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          SEND_MODE: ${{ inputs.send_mode || 'send' }}
+          WEEK: ${{ inputs.week }}
+          FORCE: ${{ inputs.force || 'false' }}
+        run: |
+          args=()
+          if [ -n "$WEEK" ]; then args+=(--week "$WEEK"); fi
+          if [ "$FORCE" = "true" ]; then args+=(--force); fi
+
+          if [ "$SEND_MODE" = "dry-run" ]; then
+            python scripts/send_weekly_email.py "${args[@]}" --print-body | tee newsletter-result.txt
+            exit 0
+          fi
+
+          if [ -z "$BUTTONDOWN_API_KEY" ]; then
+            echo "BUTTONDOWN_API_KEY is not configured; newsletter skipped." | tee newsletter-result.txt
+            exit 0
+          fi
+
+          if [ "$SEND_MODE" = "draft" ]; then args+=(--draft); fi
+          python scripts/send_weekly_email.py "${args[@]}" --send | tee newsletter-result.txt
+      - name: Commit newsletter delivery record
+        run: |
+          git add data/mailings
+          if git diff --cached --quiet; then
+            echo "No newsletter delivery record to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Record weekly newsletter delivery"
+          git push origin HEAD:main
+      - name: Summary
+        run: |
+          {
+            echo "## Weekly newsletter"
+            echo
+            cat newsletter-result.txt
+          } >> "$GITHUB_STEP_SUMMARY"

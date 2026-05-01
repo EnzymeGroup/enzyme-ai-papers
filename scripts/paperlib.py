@@ -17,6 +17,7 @@ ROOT = Path(os.environ.get("ENZYME_PAPERS_ROOT") or DEFAULT_ROOT).resolve()
 DATA_DIR = ROOT / "data"
 PAPERS_DIR = DATA_DIR / "papers"
 WEEKLY_DIR = DATA_DIR / "weekly"
+MAILINGS_DIR = DATA_DIR / "mailings"
 TAXONOMY_PATH = DATA_DIR / "taxonomy.yml"
 DOCS_DIR = ROOT / "docs"
 SCHEMAS_DIR = ROOT / "schemas"
