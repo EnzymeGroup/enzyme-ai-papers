@@ -162,13 +162,20 @@ Flow:
 1. Configure `BUTTONDOWN_API_KEY` as a GitHub Actions secret.
 2. Optionally set `extra.newsletter.buttondown_username` in `mkdocs.yml` so the
    website shows a subscription form.
-3. Open GitHub Actions.
-4. Choose `Weekly newsletter`.
-5. Select `dry-run` to preview, `draft` to create a provider draft, or `send`
+3. Set `extra.newsletter.subscribe_url` to the project website subscription
+   page, not a Buttondown API or archive URL.
+4. In Buttondown, set `subscription_redirect_url` and
+   `subscription_confirmation_redirect_url` to the project website subscription
+   page so successful subscription flows do not land on a Buttondown 404 while
+   the account is under review.
+5. Keep the Buttondown sender display name, `from_name`, set to `EnzymeGroup`.
+6. Open GitHub Actions.
+7. Choose `Weekly newsletter`.
+8. Select `dry-run` to preview, `draft` to create a provider draft, or `send`
    to queue delivery.
-6. Leave `week` blank to use the previous complete ISO week.
-7. Run the workflow.
-8. Check `data/mailings/YYYY-Www.yml` after a real send.
+9. Leave `week` blank to use the previous complete ISO week.
+10. Run the workflow.
+11. Check `data/mailings/YYYY-Www.yml` after a real send.
 
 ## Correct or Remove a Paper Manually
 

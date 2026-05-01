@@ -64,6 +64,12 @@ Actions workflow. The workflow defaults to the previous complete ISO week,
 skips weeks with no accepted papers, and records real deliveries under
 `data/mailings/`.
 
+For Buttondown-backed newsletters, keep public links pointed at the project
+website subscription page. New Buttondown archive pages can return 404 while
+the account is under review, so set Buttondown subscription and confirmation
+redirect URLs back to the project site. The sender display name should stay
+`EnzymeGroup`.
+
 ## Curation Scope
 
 Accept papers with a clear connection to enzyme AI or computational enzyme
