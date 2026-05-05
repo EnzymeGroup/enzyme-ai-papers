@@ -70,7 +70,14 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("docs/assets/title.svg", readme)
         self.assertIn("Open GitHub Submission", info)
         self.assertIn("Enzyme AI Papers Weekly", readme)
-        self.assertRegex(readme, r"2026-W17.*2026\.4\.20-")
+        weekly_heading_pattern = (
+            r"{label}: Enzyme AI Papers Weekly - \d{{4}}-W\d{{2}} "
+            r"\(\d{{4}}\.\d{{1,2}}\.\d{{1,2}}-(?:\d{{4}}\.)?\d{{1,2}}\.\d{{1,2}}\)"
+        )
+        self.assertRegex(readme, weekly_heading_pattern.format(label="Latest Week"))
+        self.assertRegex(readme, weekly_heading_pattern.format(label="Previous Week"))
+        self.assertIn("2026-W17", archive)
+        self.assertIn("2026.4.20-4.26", archive)
         self.assertNotIn("Pick of the Week", readme)
         self.assertNotIn("Directly published paper for enzyme AI curation", readme)
         self.assertNotIn("project owner URL workflow", index)
