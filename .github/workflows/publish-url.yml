@@ -24,6 +24,7 @@ on:
         required: false
         type: string
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -87,6 +88,18 @@ jobs:
           git commit -m "Publish paper from URL"
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Dispatch site deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          curl --fail-with-body -sS -X POST \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "https://api.github.com/repos/$REPOSITORY/actions/workflows/site.yml/dispatches" \
+            -d '{"ref":"main"}'
       - name: Summary
         run: |
           {
@@ -96,5 +109,5 @@ jobs:
             echo
             echo "Repository changes committed: ${{ steps.commit.outputs.changed }}"
             echo
-            echo "Site deployment will run from the main branch workflow after this push."
+            echo "Site deployment dispatched: ${{ steps.commit.outputs.changed }}"
           } >> "$GITHUB_STEP_SUMMARY"
