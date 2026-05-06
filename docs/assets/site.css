@@ -80,7 +80,7 @@
   border-radius: 10px;
   display: grid;
   gap: 0.35rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   padding: 0.35rem;
 }
 

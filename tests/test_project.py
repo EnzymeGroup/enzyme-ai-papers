@@ -46,6 +46,7 @@ class ProjectWorkflowTest(unittest.TestCase):
                 project_root / "README.md",
                 project_root / "docs" / "index.md",
                 project_root / "docs" / "archive.md",
+                project_root / "docs" / "subscribe.md",
                 project_root / "docs" / "info.md",
                 project_root / "docs" / "assets" / "title.svg",
                 project_root / "docs" / "assets" / "site.css",
@@ -58,6 +59,7 @@ class ProjectWorkflowTest(unittest.TestCase):
 
             index = (project_root / "docs" / "index.md").read_text(encoding="utf-8")
             archive = (project_root / "docs" / "archive.md").read_text(encoding="utf-8")
+            subscribe = (project_root / "docs" / "subscribe.md").read_text(encoding="utf-8")
             info = (project_root / "docs" / "info.md").read_text(encoding="utf-8")
             readme = (project_root / "README.md").read_text(encoding="utf-8")
         self.assertNotIn("Pick of the Week", index)
@@ -66,6 +68,8 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("brand-title", index)
         self.assertIn("paper-row", index)
         self.assertIn("paper-toolbar", archive)
+        self.assertIn("Subscribe to Enzyme AI Papers", subscribe)
+        self.assertIn("embed-subscribe/ecnu_enzyme", subscribe)
         self.assertIn("paper-submit-form", info)
         self.assertIn("docs/assets/title.svg", readme)
         self.assertIn("Open GitHub Submission", info)
@@ -87,7 +91,7 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("MORE_INFO.md", readme)
         self.assertNotIn("DEPLOYMENT.md", readme)
         self.assertNotIn("CURATION.md", readme)
-        self.assertIn("Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/info/).", readme)
+        self.assertIn("Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/subscribe/).", readme)
 
     def test_schema_contract_matches_validator(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))

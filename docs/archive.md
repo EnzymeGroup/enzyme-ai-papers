@@ -26,6 +26,12 @@ hide:
 </a>
 
     
+<a class="switch-item" href="../subscribe/">
+  <span class="switch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/><path d="M7 16h10"/></svg></span>
+  <strong>Subscribe</strong>
+</a>
+
+    
 <a class="switch-item" href="../info/">
   <span class="switch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
   <strong>Submit</strong>

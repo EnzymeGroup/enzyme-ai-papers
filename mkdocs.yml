@@ -30,8 +30,8 @@ plugins:
 
 extra:
   newsletter:
-    buttondown_username: "tangjianxin996"
-    subscribe_url: "https://enzymegroup.github.io/enzyme-ai-papers/info/"
+    buttondown_username: "ecnu_enzyme"
+    subscribe_url: "https://enzymegroup.github.io/enzyme-ai-papers/subscribe/"
 
 extra_css:
   - assets/site.css
@@ -49,4 +49,5 @@ markdown_extensions:
 nav:
   - Weekly: index.md
   - Archive: archive.md
+  - Subscribe: subscribe.md
   - Submit: info.md

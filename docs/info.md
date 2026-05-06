@@ -26,6 +26,12 @@ hide:
 </a>
 
     
+<a class="switch-item" href="../subscribe/">
+  <span class="switch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/><path d="M7 16h10"/></svg></span>
+  <strong>Subscribe</strong>
+</a>
+
+    
 <a class="switch-item is-active" href="./">
   <span class="switch-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg></span>
   <strong>Submit</strong>
@@ -39,25 +45,6 @@ hide:
   <span class="issue-range">2026.4.27-5.3</span>
 </aside>
 
-</section>
-
-
-
-<section class="newsletter-panel">
-  <form class="newsletter-form embeddable-buttondown-form" action="https://buttondown.com/api/emails/embed-subscribe/tangjianxin996" method="post">
-    <div>
-      <div class="section-label">Weekly email</div>
-      <h2>Subscribe to Enzyme AI Papers</h2>
-      <p>Get the weekly digest when new accepted papers are available.</p>
-    </div>
-    <label for="newsletter-email">Email</label>
-    <div class="newsletter-controls">
-      <input id="newsletter-email" type="email" name="email" required placeholder="you@example.com">
-      <input type="hidden" value="1" name="embed">
-      <button type="submit">Subscribe</button>
-    </div>
-    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown.</p>
-  </form>
 </section>
 
 

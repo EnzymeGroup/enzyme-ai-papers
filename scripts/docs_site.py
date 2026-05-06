@@ -78,8 +78,6 @@ def build_info_page(issue: dict[str, Any] | None) -> None:
     issue_url = issue_submission_url()
     content = f"""{PAGE_PREFIX}{render_page_shell("submit", issue)}
 
-{render_newsletter_signup()}
-
 {render_submit_form(issue_url)}
 
 <section class="info-grid">
@@ -105,6 +103,25 @@ Pull request -> validation + MkDocs build</code></pre>
 </section>
 """
     write_text(DOCS_DIR / "info.md", content.rstrip() + "\n")
+
+
+def build_subscribe_page(issue: dict[str, Any] | None) -> None:
+    content = f"""{PAGE_PREFIX}{render_page_shell("subscribe", issue)}
+
+{render_newsletter_signup()}
+
+<section class="info-grid">
+  <article class="info-block">
+    <h2>Weekly digest</h2>
+    <p>New accepted enzyme AI and computational enzyme papers are sent when a weekly issue is available.</p>
+  </article>
+  <article class="info-block">
+    <h2>Privacy boundary</h2>
+    <p>Subscriber addresses, confirmations, and unsubscribes are handled by Buttondown, not this repository.</p>
+  </article>
+</section>
+"""
+    write_text(DOCS_DIR / "subscribe.md", content.rstrip() + "\n")
 
 
 def render_newsletter_signup() -> str:
@@ -276,13 +293,16 @@ def render_toolbar(papers: list[Any]) -> str:
 
 def render_page_shell(active: str, issue: dict[str, Any] | None) -> str:
     if active == "weekly":
-        links = {"weekly": "./", "archive": "archive/", "submit": "info/"}
+        links = {"weekly": "./", "archive": "archive/", "subscribe": "subscribe/", "submit": "info/"}
         logo_src = "assets/title.svg"
     elif active == "archive":
-        links = {"weekly": "../", "archive": "./", "submit": "../info/"}
+        links = {"weekly": "../", "archive": "./", "subscribe": "../subscribe/", "submit": "../info/"}
+        logo_src = "../assets/title.svg"
+    elif active == "subscribe":
+        links = {"weekly": "../", "archive": "../archive/", "subscribe": "./", "submit": "../info/"}
         logo_src = "../assets/title.svg"
     else:
-        links = {"weekly": "../", "archive": "../archive/", "submit": "./"}
+        links = {"weekly": "../", "archive": "../archive/", "subscribe": "../subscribe/", "submit": "./"}
         logo_src = "../assets/title.svg"
 
     return f"""
@@ -294,6 +314,7 @@ def render_page_shell(active: str, issue: dict[str, Any] | None) -> str:
   <nav class="paper-switcher" aria-label="Section navigation">
     {render_switch_item("weekly", "Weekly", links["weekly"], active)}
     {render_switch_item("archive", "Archive", links["archive"], active)}
+    {render_switch_item("subscribe", "Subscribe", links["subscribe"], active)}
     {render_switch_item("submit", "Submit", links["submit"], active)}
   </nav>
   {render_issue_card(issue)}
@@ -430,6 +451,7 @@ def nav_icon(key: str) -> str:
     icons = {
         "weekly": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-6-3-6 3z"/><path d="M9 8h6M9 11h6"/></svg>',
         "archive": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v4H4z"/><path d="M6 9h12v10H6z"/><path d="M10 13h4"/></svg>',
+        "subscribe": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/><path d="M7 16h10"/></svg>',
         "submit": '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12"/><path d="M7 9l5-5 5 5"/><path d="M5 20h14"/></svg>',
     }
     return icons[key]

@@ -4,7 +4,7 @@
 
 A curated weekly digest of AI and computational papers for enzyme design, engineering, function prediction, and biocatalysis.
 URL-first, curator-reviewed, and designed for quick reading.
-Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/info/).
+Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/subscribe/).
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
