@@ -41,8 +41,8 @@ hide:
   
 <aside class="issue-card">
   <span class="issue-kicker">Latest issue</span>
-  <strong>2026-W18</strong>
-  <span class="issue-range">2026.4.27-5.3</span>
+  <strong>2026-W19</strong>
+  <span class="issue-range">2026.5.4-5.10</span>
 </aside>
 
 </section>

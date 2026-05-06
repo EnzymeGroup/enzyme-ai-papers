@@ -1,0 +1,40 @@
+id: doi-10-64898-2026-04-26-720921
+title: Diagnosing protein sequence search in the era of language models
+authors:
+- Zhou, H.
+- Yang, Y.
+- Lu, Y. Y.
+year: 2026
+date: '2026-04-29'
+accepted_at: '2026-05-06T10:15:25+08:00'
+source: biorxiv
+doi: 10.64898/2026.04.26.720921
+url: https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1
+pdf: https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1
+published_url: ''
+topics:
+- benchmark-dataset
+methods:
+- protein-language-model
+- hybrid-computational
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

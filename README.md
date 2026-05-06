@@ -6,7 +6,19 @@ A curated weekly digest of AI and computational papers for enzyme design, engine
 URL-first, curator-reviewed, and designed for quick reading.
 Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/subscribe/).
 
-## Latest Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
+## Latest Week: Enzyme AI Papers Weekly - 2026-W19 (2026.5.4-5.10)
+
+1 accepted enzyme AI or computational enzyme paper collected for 2026-W19.
+
+### Papers
+
+- **Diagnosing protein sequence search in the era of language models**
+  - Authors: Zhou, H., Yang, Y., Lu, Y. Y.
+  - Source: biorxiv, 2026
+  - Tags: `benchmark-dataset` `protein-language-model` `hybrid-computational` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1.full.pdf)
+
+## Previous Week: Enzyme AI Papers Weekly - 2026-W18 (2026.4.27-5.3)
 
 5 accepted enzyme AI or computational enzyme papers collected for 2026-W18.
 
@@ -41,24 +53,6 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
   - Source: biorxiv, 2026
   - Tags: `benchmark-dataset` `hybrid-computational` `computational-only` `general`
   - Links: [Paper](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4) · [PDF](https://www.biorxiv.org/content/10.1101/2025.07.01.662578v4.full.pdf)
-
-## Previous Week: Enzyme AI Papers Weekly - 2026-W17 (2026.4.20-4.26)
-
-2 accepted enzyme AI or computational enzyme papers collected for 2026-W17.
-
-### Papers
-
-- **Additive baselines furnish no evidence for epistasis learning by MULTI-evolve**
-  - Authors: Visani, G. M., Verma, A., DeWitt, W. S.
-  - Source: biorxiv, 2026
-  - Tags: `benchmark-dataset` `protein-language-model` `computational-only` `general`
-  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.23.719915v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.23.719915v1.full.pdf)
-
-- **Beyond Structure and Affinity: Context-Dependent Signals for de novo Binder Success**
-  - Authors: Bozkurt, C.
-  - Source: biorxiv, 2026
-  - Tags: `stability-expression` `benchmark-dataset` `bayesian-optimization` `computational-only` `general`
-  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.13.718094v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.13.718094v1.full.pdf)
 
 ## Usage
 
