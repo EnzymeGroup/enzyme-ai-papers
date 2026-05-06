@@ -70,6 +70,7 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("paper-toolbar", archive)
         self.assertIn("Subscribe to Enzyme AI Papers", subscribe)
         self.assertIn("embed-subscribe/ecnu_enzyme", subscribe)
+        self.assertIn("check your inbox and confirm the Buttondown email", subscribe)
         self.assertIn("paper-submit-form", info)
         self.assertIn("docs/assets/title.svg", readme)
         self.assertIn("Open GitHub Submission", info)

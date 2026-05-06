@@ -144,7 +144,7 @@ def render_newsletter_signup() -> str:
       <input type="hidden" value="1" name="embed">
       <button type="submit">Subscribe</button>
     </div>
-    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown.</p>
+    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown. After subscribing, check your inbox and confirm the Buttondown email.</p>
   </form>
 </section>
 """
@@ -158,6 +158,7 @@ def render_newsletter_signup() -> str:
       <p>Get the weekly digest when new accepted papers are available.</p>
     </div>
     <a class="newsletter-button" href="{escape(subscribe_url)}">Subscribe</a>
+    <p class="newsletter-note">After subscribing, check your inbox and confirm the Buttondown email.</p>
   </div>
 </section>
 """

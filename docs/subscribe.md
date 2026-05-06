@@ -62,7 +62,7 @@ hide:
       <input type="hidden" value="1" name="embed">
       <button type="submit">Subscribe</button>
     </div>
-    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown.</p>
+    <p class="newsletter-note">Subscriptions, confirmations, and unsubscribes are handled by Buttondown. After subscribing, check your inbox and confirm the Buttondown email.</p>
   </form>
 </section>
 
