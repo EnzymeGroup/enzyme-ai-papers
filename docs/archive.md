@@ -54,10 +54,10 @@ hide:
   <input id="paper-search" type="search" placeholder="Search title, tag, note, author">
   <button class="filter-chip is-active" data-filter="all" type="button">All</button>
   <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
-  <button class="filter-chip" data-filter="protein-language-model" type="button">protein-language-model</button>
   <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
   <button class="filter-chip" data-filter="computational-only" type="button">computational-only</button>
   <button class="filter-chip" data-filter="general" type="button">general</button>
+  <button class="filter-chip" data-filter="protein-language-model" type="button">protein-language-model</button>
   <button class="filter-chip" data-filter="function-prediction" type="button">function-prediction</button>
   <button class="filter-chip" data-filter="substrate-specificity" type="button">substrate-specificity</button>
   <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
@@ -83,8 +83,20 @@ hide:
   <section class="paper-group" id="week-2026-W19">
     <div class="section-label">2026-W19: 2026.5.4-5.10</div>
     <h2>Enzyme AI Papers Weekly - 2026-W19</h2>
-    <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W19.</p>
+    <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W19.</p>
     <div class="paper-grid">
+<article class="paper-card" data-tags="benchmark-dataset hybrid-computational computational-only general" data-search="protdbench: a unified benchmark of protein binder design and evaluation cong liu, milong ren, jiaqi guan, chengyue gong, jinyuan sun, xinshi chen, wenzhi xiao benchmark-dataset hybrid-computational computational-only general">
+  <div class="paper-meta">
+    <span>arxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation</h3>
+  <p class="authors">Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao</p>
+  <div class="tags"><span>benchmark-dataset</span><span>hybrid-computational</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="benchmark-dataset protein-language-model hybrid-computational computational-only general" data-search="diagnosing protein sequence search in the era of language models zhou, h., yang, y., lu, y. y. benchmark-dataset protein-language-model hybrid-computational computational-only general">
   <div class="paper-meta">
     <span>biorxiv</span>
@@ -203,6 +215,18 @@ hide:
   <div class="section-label">2026</div>
   <div class="paper-grid">
     
+<article class="paper-card" data-tags="benchmark-dataset hybrid-computational computational-only general" data-search="protdbench: a unified benchmark of protein binder design and evaluation cong liu, milong ren, jiaqi guan, chengyue gong, jinyuan sun, xinshi chen, wenzhi xiao benchmark-dataset hybrid-computational computational-only general">
+  <div class="paper-meta">
+    <span>arxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation</h3>
+  <p class="authors">Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao</p>
+  <div class="tags"><span>benchmark-dataset</span><span>hybrid-computational</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="benchmark-dataset protein-language-model hybrid-computational computational-only general" data-search="diagnosing protein sequence search in the era of language models zhou, h., yang, y., lu, y. y. benchmark-dataset protein-language-model hybrid-computational computational-only general">
   <div class="paper-meta">
     <span>biorxiv</span>

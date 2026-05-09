@@ -8,9 +8,15 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W19 (2026.5.4-5.10)
 
-1 accepted enzyme AI or computational enzyme paper collected for 2026-W19.
+2 accepted enzyme AI or computational enzyme papers collected for 2026-W19.
 
 ### Papers
+
+- **ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation**
+  - Authors: Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao
+  - Source: arxiv, 2026
+  - Tags: `benchmark-dataset` `hybrid-computational` `computational-only` `general`
+  - Links: [Paper](https://arxiv.org/pdf/2605.04118) · [PDF](https://arxiv.org/pdf/2605.04118)
 
 - **Diagnosing protein sequence search in the era of language models**
   - Authors: Zhou, H., Yang, Y., Lu, Y. Y.
