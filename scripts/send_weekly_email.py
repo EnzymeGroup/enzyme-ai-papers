@@ -118,22 +118,26 @@ def create_buttondown_email(issue: NewsletterIssue, draft: bool = False) -> dict
     if issue.archive_url:
         payload["canonical_url"] = issue.archive_url
 
-    return buttondown_request(BUTTONDOWN_EMAILS_URL, payload, api_key=api_key)
+    return buttondown_request(BUTTONDOWN_EMAILS_URL, payload, api_key=api_key, live_dangerously=not draft)
 
 
-def buttondown_request(url: str, payload: dict[str, Any], api_key: str | None = None) -> dict[str, Any]:
+def buttondown_request(url: str, payload: dict[str, Any], api_key: str | None = None, live_dangerously: bool = False) -> dict[str, Any]:
     token = api_key or os.environ.get("BUTTONDOWN_API_KEY", "").strip()
     if not token:
         raise ProjectError("BUTTONDOWN_API_KEY is required for Buttondown API calls.")
 
+    headers = {
+        "Authorization": f"Token {token}",
+        "Content-Type": "application/json",
+        "User-Agent": "enzyme-ai-papers/1.0",
+    }
+    if live_dangerously:
+        headers["X-Buttondown-Live-Dangerously"] = "true"
+
     request = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),
-        headers={
-            "Authorization": f"Token {token}",
-            "Content-Type": "application/json",
-            "User-Agent": "enzyme-ai-papers/1.0",
-        },
+        headers=headers,
         method="POST",
     )
     try:

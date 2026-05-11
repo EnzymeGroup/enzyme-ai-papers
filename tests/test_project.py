@@ -183,6 +183,45 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("set -o pipefail", send_step["run"])
         self.assertNotIn("newsletter skipped", send_step["run"])
 
+    def test_buttondown_send_includes_live_confirmation_header(self) -> None:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from newsletter import NewsletterIssue
+        from send_weekly_email import create_buttondown_email
+
+        captured_headers = {}
+
+        class FakeResponse:
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *args: object) -> None:
+                return None
+
+            def read(self) -> bytes:
+                return b'{"id":"email_123","status":"about_to_send"}'
+
+        def fake_urlopen(request: object, timeout: int) -> FakeResponse:
+            captured_headers.update(dict(request.header_items()))
+            self.assertEqual(timeout, 30)
+            return FakeResponse()
+
+        issue = NewsletterIssue(
+            week="2026-W19",
+            title="Enzyme AI Papers Weekly - 2026-W19",
+            date_range="2026.5.4-5.10",
+            summary="Summary",
+            subject="Enzyme AI Papers Weekly - 2026-W19",
+            body="Body",
+            paper_ids=["paper-1"],
+            content_sha256="abc123",
+            archive_url="https://example.org/archive/#week-2026-W19",
+        )
+        with patch.dict(os.environ, {"BUTTONDOWN_API_KEY": "test-key"}), patch("urllib.request.urlopen", fake_urlopen):
+            result = create_buttondown_email(issue)
+
+        self.assertEqual(result["status"], "about_to_send")
+        self.assertEqual(captured_headers["X-buttondown-live-dangerously"], "true")
+
     def test_metadata_helpers_clean_common_publisher_values(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
         from issue_tools import (
