@@ -49,17 +49,13 @@ jobs:
           WEEK: ${{ inputs.week }}
           FORCE: ${{ inputs.force || 'false' }}
         run: |
+          set -o pipefail
           args=()
           if [ -n "$WEEK" ]; then args+=(--week "$WEEK"); fi
           if [ "$FORCE" = "true" ]; then args+=(--force); fi
 
           if [ "$SEND_MODE" = "dry-run" ]; then
             python scripts/send_weekly_email.py "${args[@]}" --print-body | tee newsletter-result.txt
-            exit 0
-          fi
-
-          if [ -z "$BUTTONDOWN_API_KEY" ]; then
-            echo "BUTTONDOWN_API_KEY is not configured; newsletter skipped." | tee newsletter-result.txt
             exit 0
           fi
 

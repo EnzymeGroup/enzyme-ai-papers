@@ -310,6 +310,7 @@ def fetch_biorxiv_metadata(doi: str, server: str) -> dict[str, Any]:
         "date": date_value if re.match(r"^\d{4}-\d{2}-\d{2}$", date_value) else "",
         "source": server,
         "doi": clean_doi,
+        "url": preprint_url,
         "preprint_url": preprint_url,
         "pdf": pdf_url,
         "abstract": clean_metadata_text(item.get("abstract")),
@@ -514,7 +515,7 @@ def crossref_item_matches_pii(item: dict[str, Any], pii: str) -> bool:
 
 
 def normalize_preprint_doi(doi: str) -> str:
-    return re.sub(r"v\d+$", "", doi.strip().lower())
+    return re.sub(r"v\d+(?:\.[a-z][a-z0-9_-]*)*$", "", doi.strip().lower())
 
 
 def split_preprint_authors(value: str) -> list[str]:

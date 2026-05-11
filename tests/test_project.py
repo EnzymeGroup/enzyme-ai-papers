@@ -8,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -167,12 +168,30 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertIn("Papers: 5", result.stdout)
         self.assertIn("Content SHA-256:", result.stdout)
 
+    def test_send_weekly_email_send_requires_provider_secret(self) -> None:
+        result = self.run_script("scripts/send_weekly_email.py", "--week", "2026-W18", "--send", env={"BUTTONDOWN_API_KEY": ""})
+
+        self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+        self.assertIn("BUTTONDOWN_API_KEY is required", result.stderr)
+
+    def test_newsletter_workflow_does_not_hide_delivery_errors(self) -> None:
+        import yaml
+
+        workflow = yaml.safe_load((ROOT / ".github" / "workflows" / "newsletter.yml").read_text(encoding="utf-8"))
+        send_step = next(step for step in workflow["jobs"]["newsletter"]["steps"] if step.get("name") == "Send weekly newsletter")
+
+        self.assertIn("set -o pipefail", send_step["run"])
+        self.assertNotIn("newsletter skipped", send_step["run"])
+
     def test_metadata_helpers_clean_common_publisher_values(self) -> None:
         sys.path.insert(0, str(ROOT / "scripts"))
         from issue_tools import (
             clean_metadata_text,
             extract_sciencedirect_pii,
+            fetch_biorxiv_metadata,
+            infer_url_metadata,
             metadata_from_crossref_message,
+            normalize_preprint_doi,
             parse_metadata_date,
             unique_values,
         )
@@ -181,6 +200,28 @@ class ProjectWorkflowTest(unittest.TestCase):
         self.assertEqual(unique_values(["Zhu, Xin-Xin", " Zhu, Xin-Xin ", "Kong, Xu-Dong"]), ["Zhu, Xin-Xin", "Kong, Xu-Dong"])
         self.assertEqual(parse_metadata_date("28 November 2024"), "2024-11-28")
         self.assertEqual(extract_sciencedirect_pii("https://www.sciencedirect.com/science/article/pii/S2211383526000778"), "S2211383526000778")
+        self.assertEqual(normalize_preprint_doi("10.64898/2026.05.01.722313v2.abstract"), "10.64898/2026.05.01.722313")
+        self.assertEqual(normalize_preprint_doi("10.64898/2026.05.01.722313v2.full.pdf"), "10.64898/2026.05.01.722313")
+
+        preprint_metadata = infer_url_metadata("https://www.biorxiv.org/content/10.64898/2026.05.01.722313v2.abstract")
+        self.assertEqual(preprint_metadata["doi"], "10.64898/2026.05.01.722313")
+        self.assertEqual(preprint_metadata["identifier"], "doi-10-64898-2026-05-01-722313")
+        with patch(
+            "issue_tools.fetch_json",
+            return_value={
+                "collection": [
+                    {
+                        "title": "Simple baselines rival protein language models",
+                        "authors": "Talpir, I.; Fleishman, S. J.",
+                        "date": "2026-05-08",
+                        "version": "2",
+                    }
+                ]
+            },
+        ):
+            fetched_preprint = fetch_biorxiv_metadata("10.64898/2026.05.01.722313v2.abstract", "biorxiv")
+        self.assertEqual(fetched_preprint["url"], "https://www.biorxiv.org/content/10.64898/2026.05.01.722313v2")
+        self.assertEqual(fetched_preprint["pdf"], "https://www.biorxiv.org/content/10.64898/2026.05.01.722313v2.full.pdf")
 
         metadata = metadata_from_crossref_message(
             {
