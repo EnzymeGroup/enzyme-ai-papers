@@ -8,9 +8,15 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W20 (2026.5.11-5.17)
 
-3 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
+4 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
 
 ### Papers
+
+- **GYDE: A collaborative drug discovery platform for AI-powered protein design and engineering**
+  - Authors: Down, T., Warowny, M., Walker, A., DAscenzo, L., Lee, D., Zhou, Z., Cao, S., Bainbridge, T. W., Nicoludis, J. M., Harris, S. F., Mukhyala, K.
+  - Source: biorxiv, 2026
+  - Tags: `enzyme-design` `bayesian-optimization` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1.full.pdf)
 
 - **TD3B: Transition-Directed Discrete Diffusion for Allosteric Binder Generation**
   - Authors: Hanqun Cao, Aastha Pal, Sophia Tang, Yinuo Zhang, Jingjie Zhang, Pheng Ann Heng, Pranam Chatterjee

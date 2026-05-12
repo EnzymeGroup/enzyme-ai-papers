@@ -53,12 +53,26 @@ hide:
   <div class="section-label">Latest Week</div>
   <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
   <p class="weekly-range">2026-W20: 2026.5.11-5.17</p>
-  <p class="weekly-summary">3 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
+  <p class="weekly-summary">4 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
   <div class="section-label">Papers</div>
   <div class="weekly-paper-list">
+
+<article class="paper-row">
+  <div class="paper-row-main">
+    <div class="paper-meta">
+      <span>biorxiv</span>
+      <span>2026</span>
+    </div>
+    <h3>GYDE: A collaborative drug discovery platform for AI-powered protein design and engineering</h3>
+    <p class="authors">Down, T., Warowny, M., Walker, A., DAscenzo, L., Lee, D., Zhou, Z., Cao, S., Bainbridge, T. W., Nicoludis, J. M., Harris, S. F., Mukhyala, K.</p>
+    <div class="tags"><span>enzyme-design</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  </div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
 
 <article class="paper-row">
   <div class="paper-row-main">
