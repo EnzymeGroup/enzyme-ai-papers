@@ -1,0 +1,42 @@
+id: doi-10-64898-2026-01-18-700076
+title: Predicting Enzyme pH Optima from Structure Using Equivariant Graph Neural Networks
+authors:
+- SinhaRoy, R.
+- Clauss, C.
+- Ivanikov, I.
+- Kuenze, G.
+year: 2026
+date: '2026-05-08'
+accepted_at: '2026-05-12T13:37:30+08:00'
+source: biorxiv
+doi: 10.64898/2026.01.18.700076
+url: https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2
+pdf: https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2
+published_url: ''
+topics:
+- stability-expression
+- benchmark-dataset
+methods:
+- gnn
+- bayesian-optimization
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

@@ -8,9 +8,15 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W20 (2026.5.11-5.17)
 
-1 accepted enzyme AI or computational enzyme paper collected for 2026-W20.
+2 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
 
 ### Papers
+
+- **Predicting Enzyme pH Optima from Structure Using Equivariant Graph Neural Networks**
+  - Authors: SinhaRoy, R., Clauss, C., Ivanikov, I., Kuenze, G.
+  - Source: biorxiv, 2026
+  - Tags: `stability-expression` `benchmark-dataset` `gnn` `bayesian-optimization` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2) · [PDF](https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2.full.pdf)
 
 - **On the state of protein function prediction: a report on the fourth CAFA challenge**
   - Authors: Ramola, R., De Paolis Klauza, M. C., Piovesan, D., Peng, Y., Joshi, P., Mehdiabadi, M., Quaglia, F., Pancsa, R., Chemes, L. B., Ahmadi, M., Ahn, H., Altenhoff, A. M., Asgari, E., Aspromonte, M. C., Atalay, V., Babbi, G., Baldazzi, D., Barot, M. M., Ben-Hur, A., Benso, A., Berenberg, D., Bjorne, J., Boecker, F., Boldi, P., Bonello, J., Bordin, N., Borole, P., Ebrahimpour Boroojeny, A., Cao, R., Di Carlo, S., Casadio, R., Casiraghi, E., Chang, J.-M., Chen, C., Chen, T.-M., Cheng, J., Chiu, S., Dalkiran, A., Davidovic, R. S., Dessimoz, C., Diao, R., Djeddi, W. E., Dogan, T., Flannery, S. T., Font

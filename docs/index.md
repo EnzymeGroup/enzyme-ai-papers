@@ -53,12 +53,26 @@ hide:
   <div class="section-label">Latest Week</div>
   <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
   <p class="weekly-range">2026-W20: 2026.5.11-5.17</p>
-  <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W20.</p>
+  <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
   <div class="section-label">Papers</div>
   <div class="weekly-paper-list">
+
+<article class="paper-row">
+  <div class="paper-row-main">
+    <div class="paper-meta">
+      <span>biorxiv</span>
+      <span>2026</span>
+    </div>
+    <h3>Predicting Enzyme pH Optima from Structure Using Equivariant Graph Neural Networks</h3>
+    <p class="authors">SinhaRoy, R., Clauss, C., Ivanikov, I., Kuenze, G.</p>
+    <div class="tags"><span>stability-expression</span><span>benchmark-dataset</span><span>gnn</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  </div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
 
 <article class="paper-row">
   <div class="paper-row-main">
