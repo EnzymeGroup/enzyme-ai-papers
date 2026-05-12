@@ -41,8 +41,8 @@ hide:
   
 <aside class="issue-card">
   <span class="issue-kicker">Latest issue</span>
-  <strong>2026-W19</strong>
-  <span class="issue-range">2026.5.4-5.10</span>
+  <strong>2026-W20</strong>
+  <span class="issue-range">2026.5.11-5.17</span>
 </aside>
 
 </section>
@@ -53,14 +53,14 @@ hide:
   <label class="search-label" for="paper-search">Search</label>
   <input id="paper-search" type="search" placeholder="Search title, tag, note, author">
   <button class="filter-chip is-active" data-filter="all" type="button">All</button>
-  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
-  <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
+  <button class="filter-chip" data-filter="function-prediction" type="button">function-prediction</button>
+  <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
   <button class="filter-chip" data-filter="computational-only" type="button">computational-only</button>
   <button class="filter-chip" data-filter="general" type="button">general</button>
+  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
+  <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
   <button class="filter-chip" data-filter="protein-language-model" type="button">protein-language-model</button>
-  <button class="filter-chip" data-filter="function-prediction" type="button">function-prediction</button>
   <button class="filter-chip" data-filter="substrate-specificity" type="button">substrate-specificity</button>
-  <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
   <button class="filter-chip" data-filter="enzyme-design" type="button">enzyme-design</button>
   <button class="filter-chip" data-filter="stability-expression" type="button">stability-expression</button>
   <button class="filter-chip" data-filter="directed-evolution" type="button">directed-evolution</button>
@@ -71,7 +71,8 @@ hide:
 <section class="weekly-history">
   <div class="section-label">Weekly issues</div>
   <div class="weekly-links">
-    <a class="weekly-link" href="#week-2026-W19"><strong>2026-W19</strong><span>2026.5.4-5.10</span></a>
+    <a class="weekly-link" href="#week-2026-W20"><strong>2026-W20</strong><span>2026.5.11-5.17</span></a>
+<a class="weekly-link" href="#week-2026-W19"><strong>2026-W19</strong><span>2026.5.4-5.10</span></a>
 <a class="weekly-link" href="#week-2026-W18"><strong>2026-W18</strong><span>2026.4.27-5.3</span></a>
 <a class="weekly-link" href="#week-2026-W17"><strong>2026-W17</strong><span>2026.4.20-4.26</span></a>
   </div>
@@ -79,6 +80,25 @@ hide:
 
 
 <section class="paper-sections weekly-archive">
+
+  <section class="paper-group" id="week-2026-W20">
+    <div class="section-label">2026-W20: 2026.5.11-5.17</div>
+    <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
+    <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W20.</p>
+    <div class="paper-grid">
+<article class="paper-card" data-tags="function-prediction bayesian-optimization computational-only general" data-search="on the state of protein function prediction: a report on the fourth cafa challenge ramola, r., de paolis klauza, m. c., piovesan, d., peng, y., joshi, p., mehdiabadi, m., quaglia, f., pancsa, r., chemes, l. b., ahmadi, m., ahn, h., altenhoff, a. m., asgari, e., aspromonte, m. c., atalay, v., babbi, g., baldazzi, d., barot, m. m., ben-hur, a., benso, a., berenberg, d., bjorne, j., boecker, f., boldi, p., bonello, j., bordin, n., borole, p., ebrahimpour boroojeny, a., cao, r., di carlo, s., casadio, r., casiraghi, e., chang, j.-m., chen, c., chen, t.-m., cheng, j., chiu, s., dalkiran, a., davidovic, r. s., dessimoz, c., diao, r., djeddi, w. e., dogan, t., flannery, s. t., font function-prediction bayesian-optimization computational-only general">
+  <div class="paper-meta">
+    <span>biorxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>On the state of protein function prediction: a report on the fourth CAFA challenge</h3>
+  <p class="authors">Ramola, R., De Paolis Klauza, M. C., Piovesan, D., Peng, Y., Joshi, P., Mehdiabadi, M., Quaglia, F., Pancsa, R., Chemes, L. B., Ahmadi, M., Ahn, H., Altenhoff, A. M., Asgari, E., Aspromonte, M. C., Atalay, V., Babbi, G., Baldazzi, D., Barot, M. M., Ben-Hur, A., Benso, A., Berenberg, D., Bjorne, J., Boecker, F., Boldi, P., Bonello, J., Bordin, N., Borole, P., Ebrahimpour Boroojeny, A., Cao, R., Di Carlo, S., Casadio, R., Casiraghi, E., Chang, J.-M., Chen, C., Chen, T.-M., Cheng, J., Chiu, S., Dalkiran, A., Davidovic, R. S., Dessimoz, C., Diao, R., Djeddi, W. E., Dogan, T., Flannery, S. T., Font</p>
+  <div class="tags"><span>function-prediction</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+</div>
+  </section>
+
 
   <section class="paper-group" id="week-2026-W19">
     <div class="section-label">2026-W19: 2026.5.4-5.10</div>
@@ -215,6 +235,18 @@ hide:
   <div class="section-label">2026</div>
   <div class="paper-grid">
     
+<article class="paper-card" data-tags="function-prediction bayesian-optimization computational-only general" data-search="on the state of protein function prediction: a report on the fourth cafa challenge ramola, r., de paolis klauza, m. c., piovesan, d., peng, y., joshi, p., mehdiabadi, m., quaglia, f., pancsa, r., chemes, l. b., ahmadi, m., ahn, h., altenhoff, a. m., asgari, e., aspromonte, m. c., atalay, v., babbi, g., baldazzi, d., barot, m. m., ben-hur, a., benso, a., berenberg, d., bjorne, j., boecker, f., boldi, p., bonello, j., bordin, n., borole, p., ebrahimpour boroojeny, a., cao, r., di carlo, s., casadio, r., casiraghi, e., chang, j.-m., chen, c., chen, t.-m., cheng, j., chiu, s., dalkiran, a., davidovic, r. s., dessimoz, c., diao, r., djeddi, w. e., dogan, t., flannery, s. t., font function-prediction bayesian-optimization computational-only general">
+  <div class="paper-meta">
+    <span>biorxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>On the state of protein function prediction: a report on the fourth CAFA challenge</h3>
+  <p class="authors">Ramola, R., De Paolis Klauza, M. C., Piovesan, D., Peng, Y., Joshi, P., Mehdiabadi, M., Quaglia, F., Pancsa, R., Chemes, L. B., Ahmadi, M., Ahn, H., Altenhoff, A. M., Asgari, E., Aspromonte, M. C., Atalay, V., Babbi, G., Baldazzi, D., Barot, M. M., Ben-Hur, A., Benso, A., Berenberg, D., Bjorne, J., Boecker, F., Boldi, P., Bonello, J., Bordin, N., Borole, P., Ebrahimpour Boroojeny, A., Cao, R., Di Carlo, S., Casadio, R., Casiraghi, E., Chang, J.-M., Chen, C., Chen, T.-M., Cheng, J., Chiu, S., Dalkiran, A., Davidovic, R. S., Dessimoz, C., Diao, R., Djeddi, W. E., Dogan, T., Flannery, S. T., Font</p>
+  <div class="tags"><span>function-prediction</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="benchmark-dataset hybrid-computational computational-only general" data-search="protdbench: a unified benchmark of protein binder design and evaluation cong liu, milong ren, jiaqi guan, chengyue gong, jinyuan sun, xinshi chen, wenzhi xiao benchmark-dataset hybrid-computational computational-only general">
   <div class="paper-meta">
     <span>arxiv</span>

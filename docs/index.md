@@ -41,8 +41,8 @@ hide:
   
 <aside class="issue-card">
   <span class="issue-kicker">Latest issue</span>
-  <strong>2026-W19</strong>
-  <span class="issue-range">2026.5.4-5.10</span>
+  <strong>2026-W20</strong>
+  <span class="issue-range">2026.5.11-5.17</span>
 </aside>
 
 </section>
@@ -51,9 +51,9 @@ hide:
 
 <section class="weekly-overview">
   <div class="section-label">Latest Week</div>
-  <h2>Enzyme AI Papers Weekly - 2026-W19</h2>
-  <p class="weekly-range">2026-W19: 2026.5.4-5.10</p>
-  <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W19.</p>
+  <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
+  <p class="weekly-range">2026-W20: 2026.5.11-5.17</p>
+  <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W20.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
@@ -63,28 +63,14 @@ hide:
 <article class="paper-row">
   <div class="paper-row-main">
     <div class="paper-meta">
-      <span>arxiv</span>
-      <span>2026</span>
-    </div>
-    <h3>ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation</h3>
-    <p class="authors">Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao</p>
-    <div class="tags"><span>benchmark-dataset</span><span>hybrid-computational</span><span>computational-only</span><span>general</span></div>
-  </div>
-  <div class="paper-links"><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://arxiv.org/pdf/2605.04118"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
-</article>
-
-
-<article class="paper-row">
-  <div class="paper-row-main">
-    <div class="paper-meta">
       <span>biorxiv</span>
       <span>2026</span>
     </div>
-    <h3>Diagnosing protein sequence search in the era of language models</h3>
-    <p class="authors">Zhou, H., Yang, Y., Lu, Y. Y.</p>
-    <div class="tags"><span>benchmark-dataset</span><span>protein-language-model</span><span>hybrid-computational</span><span>computational-only</span><span>general</span></div>
+    <h3>On the state of protein function prediction: a report on the fourth CAFA challenge</h3>
+    <p class="authors">Ramola, R., De Paolis Klauza, M. C., Piovesan, D., Peng, Y., Joshi, P., Mehdiabadi, M., Quaglia, F., Pancsa, R., Chemes, L. B., Ahmadi, M., Ahn, H., Altenhoff, A. M., Asgari, E., Aspromonte, M. C., Atalay, V., Babbi, G., Baldazzi, D., Barot, M. M., Ben-Hur, A., Benso, A., Berenberg, D., Bjorne, J., Boecker, F., Boldi, P., Bonello, J., Bordin, N., Borole, P., Ebrahimpour Boroojeny, A., Cao, R., Di Carlo, S., Casadio, R., Casiraghi, E., Chang, J.-M., Chen, C., Chen, T.-M., Cheng, J., Chiu, S., Dalkiran, A., Davidovic, R. S., Dessimoz, C., Diao, R., Djeddi, W. E., Dogan, T., Flannery, S. T., Font</p>
+    <div class="tags"><span>function-prediction</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
   </div>
-  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
 </article>
 
   </div>

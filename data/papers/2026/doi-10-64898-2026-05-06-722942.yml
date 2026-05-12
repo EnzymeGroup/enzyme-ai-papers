@@ -1,0 +1,81 @@
+id: doi-10-64898-2026-05-06-722942
+title: 'On the state of protein function prediction: a report on the fourth CAFA challenge'
+authors:
+- Ramola, R.
+- De Paolis Klauza, M. C.
+- Piovesan, D.
+- Peng, Y.
+- Joshi, P.
+- Mehdiabadi, M.
+- Quaglia, F.
+- Pancsa, R.
+- Chemes, L. B.
+- Ahmadi, M.
+- Ahn, H.
+- Altenhoff, A. M.
+- Asgari, E.
+- Aspromonte, M. C.
+- Atalay, V.
+- Babbi, G.
+- Baldazzi, D.
+- Barot, M. M.
+- Ben-Hur, A.
+- Benso, A.
+- Berenberg, D.
+- Bjorne, J.
+- Boecker, F.
+- Boldi, P.
+- Bonello, J.
+- Bordin, N.
+- Borole, P.
+- Ebrahimpour Boroojeny, A.
+- Cao, R.
+- Di Carlo, S.
+- Casadio, R.
+- Casiraghi, E.
+- Chang, J.-M.
+- Chen, C.
+- Chen, T.-M.
+- Cheng, J.
+- Chiu, S.
+- Dalkiran, A.
+- Davidovic, R. S.
+- Dessimoz, C.
+- Diao, R.
+- Djeddi, W. E.
+- Dogan, T.
+- Flannery, S. T.
+- Font
+year: 2026
+date: '2026-05-11'
+accepted_at: '2026-05-12T10:36:08+08:00'
+source: biorxiv
+doi: 10.64898/2026.05.06.722942
+url: https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1
+pdf: https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1
+published_url: ''
+topics:
+- function-prediction
+methods:
+- bayesian-optimization
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false
