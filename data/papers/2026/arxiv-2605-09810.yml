@@ -1,0 +1,43 @@
+id: arxiv-2605-09810
+title: 'TD3B: Transition-Directed Discrete Diffusion for Allosteric Binder Generation'
+authors:
+- Hanqun Cao
+- Aastha Pal
+- Sophia Tang
+- Yinuo Zhang
+- Jingjie Zhang
+- Pheng Ann Heng
+- Pranam Chatterjee
+year: 2026
+date: '2026-05-10'
+accepted_at: '2026-05-12T20:40:02+08:00'
+source: arxiv
+doi: ''
+url: https://arxiv.org/pdf/2605.09810
+pdf: https://arxiv.org/pdf/2605.09810
+code: ''
+project: ''
+preprint_url: https://arxiv.org/abs/2605.09810
+published_url: ''
+topics:
+- enzyme-design
+methods:
+- diffusion-generative-model
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false

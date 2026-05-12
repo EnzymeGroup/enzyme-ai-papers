@@ -8,9 +8,15 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
 
 ## Latest Week: Enzyme AI Papers Weekly - 2026-W20 (2026.5.11-5.17)
 
-2 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
+3 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
 
 ### Papers
+
+- **TD3B: Transition-Directed Discrete Diffusion for Allosteric Binder Generation**
+  - Authors: Hanqun Cao, Aastha Pal, Sophia Tang, Yinuo Zhang, Jingjie Zhang, Pheng Ann Heng, Pranam Chatterjee
+  - Source: arxiv, 2026
+  - Tags: `enzyme-design` `diffusion-generative-model` `computational-only` `general`
+  - Links: [Paper](https://arxiv.org/pdf/2605.09810) · [PDF](https://arxiv.org/pdf/2605.09810)
 
 - **Predicting Enzyme pH Optima from Structure Using Equivariant Graph Neural Networks**
   - Authors: SinhaRoy, R., Clauss, C., Ivanikov, I., Kuenze, G.

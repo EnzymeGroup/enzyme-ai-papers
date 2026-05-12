@@ -53,12 +53,26 @@ hide:
   <div class="section-label">Latest Week</div>
   <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
   <p class="weekly-range">2026-W20: 2026.5.11-5.17</p>
-  <p class="weekly-summary">2 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
+  <p class="weekly-summary">3 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
   <div class="section-label">Papers</div>
   <div class="weekly-paper-list">
+
+<article class="paper-row">
+  <div class="paper-row-main">
+    <div class="paper-meta">
+      <span>arxiv</span>
+      <span>2026</span>
+    </div>
+    <h3>TD3B: Transition-Directed Discrete Diffusion for Allosteric Binder Generation</h3>
+    <p class="authors">Hanqun Cao, Aastha Pal, Sophia Tang, Yinuo Zhang, Jingjie Zhang, Pheng Ann Heng, Pranam Chatterjee</p>
+    <div class="tags"><span>enzyme-design</span><span>diffusion-generative-model</span><span>computational-only</span><span>general</span></div>
+  </div>
+  <div class="paper-links"><a href="https://arxiv.org/pdf/2605.09810"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://arxiv.org/pdf/2605.09810"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
 
 <article class="paper-row">
   <div class="paper-row-main">
