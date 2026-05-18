@@ -1,0 +1,13 @@
+week: 2026-W20
+status: about_to_send
+paper_ids:
+- doi-10-64898-2026-03-24-714039
+- arxiv-2605-09810
+- doi-10-64898-2026-01-18-700076
+- doi-10-64898-2026-05-06-722942
+content_sha256: 34113b84a02ceb6005ec5756398aa2d7eecb6c4284e20be9fc9ccc46f78e71a3
+sent_at: '2026-05-18T13:06:43+08:00'
+provider: buttondown
+provider_message_id: em_6260m8ysje8ma9y8mycyq1sfmw
+subject: Enzyme AI Papers Weekly - 2026-W20
+archive_url: https://enzymegroup.github.io/enzyme-ai-papers/archive/#week-2026-W20
