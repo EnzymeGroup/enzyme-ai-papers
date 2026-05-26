@@ -41,8 +41,8 @@ hide:
   
 <aside class="issue-card">
   <span class="issue-kicker">Latest issue</span>
-  <strong>2026-W20</strong>
-  <span class="issue-range">2026.5.11-5.17</span>
+  <strong>2026-W22</strong>
+  <span class="issue-range">2026.5.25-5.31</span>
 </aside>
 
 </section>
@@ -53,18 +53,18 @@ hide:
   <label class="search-label" for="paper-search">Search</label>
   <input id="paper-search" type="search" placeholder="Search title, tag, note, author">
   <button class="filter-chip is-active" data-filter="all" type="button">All</button>
-  <button class="filter-chip" data-filter="enzyme-design" type="button">enzyme-design</button>
+  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
+  <button class="filter-chip" data-filter="diffusion-generative-model" type="button">diffusion-generative-model</button>
   <button class="filter-chip" data-filter="bayesian-optimization" type="button">bayesian-optimization</button>
+  <button class="filter-chip" data-filter="rosetta-classical" type="button">rosetta-classical</button>
   <button class="filter-chip" data-filter="computational-only" type="button">computational-only</button>
   <button class="filter-chip" data-filter="general" type="button">general</button>
-  <button class="filter-chip" data-filter="diffusion-generative-model" type="button">diffusion-generative-model</button>
+  <button class="filter-chip" data-filter="enzyme-design" type="button">enzyme-design</button>
   <button class="filter-chip" data-filter="stability-expression" type="button">stability-expression</button>
-  <button class="filter-chip" data-filter="benchmark-dataset" type="button">benchmark-dataset</button>
   <button class="filter-chip" data-filter="gnn" type="button">gnn</button>
   <button class="filter-chip" data-filter="function-prediction" type="button">function-prediction</button>
   <button class="filter-chip" data-filter="hybrid-computational" type="button">hybrid-computational</button>
   <button class="filter-chip" data-filter="protein-language-model" type="button">protein-language-model</button>
-  <button class="filter-chip" data-filter="substrate-specificity" type="button">substrate-specificity</button>
 </section>
 
 
@@ -72,7 +72,8 @@ hide:
 <section class="weekly-history">
   <div class="section-label">Weekly issues</div>
   <div class="weekly-links">
-    <a class="weekly-link" href="#week-2026-W20"><strong>2026-W20</strong><span>2026.5.11-5.17</span></a>
+    <a class="weekly-link" href="#week-2026-W22"><strong>2026-W22</strong><span>2026.5.25-5.31</span></a>
+<a class="weekly-link" href="#week-2026-W20"><strong>2026-W20</strong><span>2026.5.11-5.17</span></a>
 <a class="weekly-link" href="#week-2026-W19"><strong>2026-W19</strong><span>2026.5.4-5.10</span></a>
 <a class="weekly-link" href="#week-2026-W18"><strong>2026-W18</strong><span>2026.4.27-5.3</span></a>
 <a class="weekly-link" href="#week-2026-W17"><strong>2026-W17</strong><span>2026.4.20-4.26</span></a>
@@ -81,6 +82,25 @@ hide:
 
 
 <section class="paper-sections weekly-archive">
+
+  <section class="paper-group" id="week-2026-W22">
+    <div class="section-label">2026-W22: 2026.5.25-5.31</div>
+    <h2>Enzyme AI Papers Weekly - 2026-W22</h2>
+    <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W22.</p>
+    <div class="paper-grid">
+<article class="paper-card" data-tags="benchmark-dataset diffusion-generative-model bayesian-optimization rosetta-classical computational-only general" data-search="rescuing true protein binders from ai hallucinations via zero-shot, ensemble-driven statistical physics scoring chou, c.-h., hong, x., xu, j. benchmark-dataset diffusion-generative-model bayesian-optimization rosetta-classical computational-only general">
+  <div class="paper-meta">
+    <span>biorxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>Rescuing true protein binders from AI hallucinations via zero-shot, ensemble-driven statistical physics scoring</h3>
+  <p class="authors">Chou, C.-H., Hong, X., Xu, J.</p>
+  <div class="tags"><span>benchmark-dataset</span><span>diffusion-generative-model</span><span>bayesian-optimization</span><span>rosetta-classical</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+</div>
+  </section>
+
 
   <section class="paper-group" id="week-2026-W20">
     <div class="section-label">2026-W20: 2026.5.11-5.17</div>
@@ -272,6 +292,18 @@ hide:
   <div class="section-label">2026</div>
   <div class="paper-grid">
     
+<article class="paper-card" data-tags="benchmark-dataset diffusion-generative-model bayesian-optimization rosetta-classical computational-only general" data-search="rescuing true protein binders from ai hallucinations via zero-shot, ensemble-driven statistical physics scoring chou, c.-h., hong, x., xu, j. benchmark-dataset diffusion-generative-model bayesian-optimization rosetta-classical computational-only general">
+  <div class="paper-meta">
+    <span>biorxiv</span>
+    <span>2026</span>
+  </div>
+  <h3>Rescuing true protein binders from AI hallucinations via zero-shot, ensemble-driven statistical physics scoring</h3>
+  <p class="authors">Chou, C.-H., Hong, X., Xu, J.</p>
+  <div class="tags"><span>benchmark-dataset</span><span>diffusion-generative-model</span><span>bayesian-optimization</span><span>rosetta-classical</span><span>computational-only</span><span>general</span></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+</article>
+
+
 <article class="paper-card" data-tags="enzyme-design bayesian-optimization computational-only general" data-search="gyde: a collaborative drug discovery platform for ai-powered protein design and engineering down, t., warowny, m., walker, a., dascenzo, l., lee, d., zhou, z., cao, s., bainbridge, t. w., nicoludis, j. m., harris, s. f., mukhyala, k. enzyme-design bayesian-optimization computational-only general">
   <div class="paper-meta">
     <span>biorxiv</span>

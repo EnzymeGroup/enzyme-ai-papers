@@ -41,8 +41,8 @@ hide:
   
 <aside class="issue-card">
   <span class="issue-kicker">Latest issue</span>
-  <strong>2026-W20</strong>
-  <span class="issue-range">2026.5.11-5.17</span>
+  <strong>2026-W22</strong>
+  <span class="issue-range">2026.5.25-5.31</span>
 </aside>
 
 </section>
@@ -51,9 +51,9 @@ hide:
 
 <section class="weekly-overview">
   <div class="section-label">Latest Week</div>
-  <h2>Enzyme AI Papers Weekly - 2026-W20</h2>
-  <p class="weekly-range">2026-W20: 2026.5.11-5.17</p>
-  <p class="weekly-summary">4 accepted enzyme AI or computational enzyme papers collected for 2026-W20.</p>
+  <h2>Enzyme AI Papers Weekly - 2026-W22</h2>
+  <p class="weekly-range">2026-W22: 2026.5.25-5.31</p>
+  <p class="weekly-summary">1 accepted enzyme AI or computational enzyme paper collected for 2026-W22.</p>
 </section>
 
 <section class="weekly-paper-section" id="weekly-papers">
@@ -66,53 +66,11 @@ hide:
       <span>biorxiv</span>
       <span>2026</span>
     </div>
-    <h3>GYDE: A collaborative drug discovery platform for AI-powered protein design and engineering</h3>
-    <p class="authors">Down, T., Warowny, M., Walker, A., DAscenzo, L., Lee, D., Zhou, Z., Cao, S., Bainbridge, T. W., Nicoludis, J. M., Harris, S. F., Mukhyala, K.</p>
-    <div class="tags"><span>enzyme-design</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
+    <h3>Rescuing true protein binders from AI hallucinations via zero-shot, ensemble-driven statistical physics scoring</h3>
+    <p class="authors">Chou, C.-H., Hong, X., Xu, J.</p>
+    <div class="tags"><span>benchmark-dataset</span><span>diffusion-generative-model</span><span>bayesian-optimization</span><span>rosetta-classical</span><span>computational-only</span><span>general</span></div>
   </div>
-  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.03.24.714039v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
-</article>
-
-
-<article class="paper-row">
-  <div class="paper-row-main">
-    <div class="paper-meta">
-      <span>arxiv</span>
-      <span>2026</span>
-    </div>
-    <h3>TD3B: Transition-Directed Discrete Diffusion for Allosteric Binder Generation</h3>
-    <p class="authors">Hanqun Cao, Aastha Pal, Sophia Tang, Yinuo Zhang, Jingjie Zhang, Pheng Ann Heng, Pranam Chatterjee</p>
-    <div class="tags"><span>enzyme-design</span><span>diffusion-generative-model</span><span>computational-only</span><span>general</span></div>
-  </div>
-  <div class="paper-links"><a href="https://arxiv.org/pdf/2605.09810"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://arxiv.org/pdf/2605.09810"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
-</article>
-
-
-<article class="paper-row">
-  <div class="paper-row-main">
-    <div class="paper-meta">
-      <span>biorxiv</span>
-      <span>2026</span>
-    </div>
-    <h3>Predicting Enzyme pH Optima from Structure Using Equivariant Graph Neural Networks</h3>
-    <p class="authors">SinhaRoy, R., Clauss, C., Ivanikov, I., Kuenze, G.</p>
-    <div class="tags"><span>stability-expression</span><span>benchmark-dataset</span><span>gnn</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
-  </div>
-  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.01.18.700076v2.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
-</article>
-
-
-<article class="paper-row">
-  <div class="paper-row-main">
-    <div class="paper-meta">
-      <span>biorxiv</span>
-      <span>2026</span>
-    </div>
-    <h3>On the state of protein function prediction: a report on the fourth CAFA challenge</h3>
-    <p class="authors">Ramola, R., De Paolis Klauza, M. C., Piovesan, D., Peng, Y., Joshi, P., Mehdiabadi, M., Quaglia, F., Pancsa, R., Chemes, L. B., Ahmadi, M., Ahn, H., Altenhoff, A. M., Asgari, E., Aspromonte, M. C., Atalay, V., Babbi, G., Baldazzi, D., Barot, M. M., Ben-Hur, A., Benso, A., Berenberg, D., Bjorne, J., Boecker, F., Boldi, P., Bonello, J., Bordin, N., Borole, P., Ebrahimpour Boroojeny, A., Cao, R., Di Carlo, S., Casadio, R., Casiraghi, E., Chang, J.-M., Chen, C., Chen, T.-M., Cheng, J., Chiu, S., Dalkiran, A., Davidovic, R. S., Dessimoz, C., Diao, R., Djeddi, W. E., Dogan, T., Flannery, S. T., Font</p>
-    <div class="tags"><span>function-prediction</span><span>bayesian-optimization</span><span>computational-only</span><span>general</span></div>
-  </div>
-  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
+  <div class="paper-links"><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg><span>Paper</span></a><a href="https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1.full.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M8.5 16h7"/></svg><span>PDF</span></a></div>
 </article>
 
   </div>

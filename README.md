@@ -6,7 +6,19 @@ A curated weekly digest of AI and computational papers for enzyme design, engine
 URL-first, curator-reviewed, and designed for quick reading.
 Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-papers/subscribe/).
 
-## Latest Week: Enzyme AI Papers Weekly - 2026-W20 (2026.5.11-5.17)
+## Latest Week: Enzyme AI Papers Weekly - 2026-W22 (2026.5.25-5.31)
+
+1 accepted enzyme AI or computational enzyme paper collected for 2026-W22.
+
+### Papers
+
+- **Rescuing true protein binders from AI hallucinations via zero-shot, ensemble-driven statistical physics scoring**
+  - Authors: Chou, C.-H., Hong, X., Xu, J.
+  - Source: biorxiv, 2026
+  - Tags: `benchmark-dataset` `diffusion-generative-model` `bayesian-optimization` `rosetta-classical` `computational-only` `general`
+  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1.full.pdf)
+
+## Previous Week: Enzyme AI Papers Weekly - 2026-W20 (2026.5.11-5.17)
 
 4 accepted enzyme AI or computational enzyme papers collected for 2026-W20.
 
@@ -35,24 +47,6 @@ Weekly email: [subscribe to the digest](https://enzymegroup.github.io/enzyme-ai-
   - Source: biorxiv, 2026
   - Tags: `function-prediction` `bayesian-optimization` `computational-only` `general`
   - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.05.06.722942v1.full.pdf)
-
-## Previous Week: Enzyme AI Papers Weekly - 2026-W19 (2026.5.4-5.10)
-
-2 accepted enzyme AI or computational enzyme papers collected for 2026-W19.
-
-### Papers
-
-- **ProtDBench: A Unified Benchmark of Protein Binder Design and Evaluation**
-  - Authors: Cong Liu, Milong Ren, Jiaqi Guan, Chengyue Gong, Jinyuan Sun, Xinshi Chen, Wenzhi Xiao
-  - Source: arxiv, 2026
-  - Tags: `benchmark-dataset` `hybrid-computational` `computational-only` `general`
-  - Links: [Paper](https://arxiv.org/pdf/2605.04118) · [PDF](https://arxiv.org/pdf/2605.04118)
-
-- **Diagnosing protein sequence search in the era of language models**
-  - Authors: Zhou, H., Yang, Y., Lu, Y. Y.
-  - Source: biorxiv, 2026
-  - Tags: `benchmark-dataset` `protein-language-model` `hybrid-computational` `computational-only` `general`
-  - Links: [Paper](https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1) · [PDF](https://www.biorxiv.org/content/10.64898/2026.04.26.720921v1.full.pdf)
 
 ## Usage
 

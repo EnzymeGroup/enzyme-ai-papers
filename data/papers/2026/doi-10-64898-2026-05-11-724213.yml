@@ -1,0 +1,42 @@
+id: doi-10-64898-2026-05-11-724213
+title: Rescuing true protein binders from AI hallucinations via zero-shot, ensemble-driven
+  statistical physics scoring
+authors:
+- Chou, C.-H.
+- Hong, X.
+- Xu, J.
+year: 2026
+date: '2026-05-18'
+accepted_at: '2026-05-26T16:05:07+08:00'
+source: biorxiv
+doi: 10.64898/2026.05.11.724213
+url: https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1
+pdf: https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1.full.pdf
+code: ''
+project: ''
+preprint_url: https://www.biorxiv.org/content/10.64898/2026.05.11.724213v1
+published_url: ''
+topics:
+- benchmark-dataset
+methods:
+- diffusion-generative-model
+- bayesian-optimization
+- rosetta-classical
+evidence:
+- computational-only
+applications:
+- general
+one_liner: No curator summary supplied.
+why_it_matters: No curator note supplied.
+curator: Jianxinnn
+featured: false
+issue: ''
+submitted_by: Jianxinnn
+reviewed_by: Jianxinnn
+notes: Published directly from URL by Jianxinnn.
+curation:
+  status: accepted
+  issue: ''
+  submitted_by: Jianxinnn
+  reviewed_by: Jianxinnn
+  featured: false
